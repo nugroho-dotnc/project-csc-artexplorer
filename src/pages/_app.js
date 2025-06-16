@@ -81,7 +81,7 @@ const Navbar = () => {
 export default function App({ Component, pageProps }) {
   return <>
   <Navbar/>
-  <main className="pt-24">
+  <main>
     <Component {...pageProps} />
   </main>
   </>;
