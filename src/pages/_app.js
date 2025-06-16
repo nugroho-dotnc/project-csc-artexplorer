@@ -1,15 +1,11 @@
 import "@/styles/globals.css";
-import { useRouter } from 'next/router';
-import Layout from "@/components/Layout";
+import {Navbar} from "@/components/Navbar";
 
-export default function App({ Component, pageProps}) {
-  const getLayout = Component.getLayout || ((page) =>
-    <Layout>
-      {page}
-    </Layout>
-  );
-
-  return getLayout(
-    <Component {...pageProps} />
-  );
+export default function App({ Component, pageProps }) {
+  return <>
+  <Navbar/>
+  <main>
+    <Component {...pageProps}/>
+  </main>
+  </>;
 }
