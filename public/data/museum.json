@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "nama": "Museum Nasional Indonesia",
+    "deskripsi": "Museum Nasional Republik Indonesia, atau Museum Gajah, adalah ikon di Jakarta dan museum terbesar di Asia Tenggara yang menyimpan lebih dari 190.000 artefak sejarah dan budaya bangsa. Dari peninggalan prasejarah hingga era kemerdekaan, koleksi arkeologi, etnografi, dan lainnya menawarkan perjalanan edukatif menelusuri kekayaan peradaban Indonesia.",
+    "lokasi": "Jl. Medan Merdeka Barat No.12, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110",
+    "gambar": "/images/museum/museum-nasional.jpeg",
+    "background": "/public/images/museum-nasional/museum-nasional-tampak-depan.svg",
+    "koleksi": [
+      {
+        "gambar": "/public/images/museum-nasional/alusu-museum-nasional.jpg",
+        "nama": "Alusu",
+        "deskripsi": "Alusu adalah alat musik perkusi berbentuk tabung atau kotak yang diisi biji – bijian. Alat ini memegang peranan penting dalam tarian mabissu. Menurut kepercayaan setempat, bunyi yang terdengar dari alusu dianggap sebagai pengantar jalannya syair – syair berisikan pujian yang dipanjatkan kepada Sangiang Serri saat upacara menanam padi."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/ani-ani-museum-nasional.jpg",
+        "nama": "Ani-Ani",
+        "deskripsi": "Dalam berbagai kebudayaan daerah, karena dianggap penting, padi dipersonifikasikan sebagai manusia atau dewa. Mitos mengenai padi ditemukan di banyak kebudayaan di Jawa, Sumatra, Sulawesi, Kalimantan, dan pulau-pulau di kawasan Nusa Tenggara. Dewi Sri, Sanghyang Pohaci, adalah contoh dewi padi di Pulau Jawa. Umumnya petani menghormati dan tidak ingin menyakitinya dengan menggunakan ani-ani atau ketam ketika panen."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/arca-buddha-museum-nasional.jpg",
+        "nama": "Arca Buddha",
+        "deskripsi": "Perunggu Sungai Komering, Palembang, Sumatra Selatan Abad 8 – 11 Arca Buddha berdiri samapāda temuan Sungai Komering, Palembang yang bergaya seni Sailendra. Tangan kanan bersikap abhaya (menolak bahaya), tangan kirinya memegang ujung jubah. Pakaiannya berupa jubah tipis yang menutupi kedua bahu. Gaya seni arca Sailendra dapat dicirikan dari bentuknya yang proporsional dan benar-benar menggambarkan sosok dewa yang dipuja. Di samping itu, arca Buddha ini juga mendapat pengaruh kesenian Pala. Karakter kesenian Pala dapat dilihat dari penggambaran pakaian berupa jubah tipis yang menutupi kedua bahu, usnisa (tonjolan di atas kepala) digambarkan lebih besar, dan lipatan jubah disekitar leher terlihat seperti kalung sementara bagian kain yang menjuntai ke bawah terlihat seperti ekor burung layang-layang."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/arca-garuda-museum-nasional.jpg",
+        "nama": "Arca Garuda",
+        "deskripsi": "Nama Garuda berasal dari kata Sanskerta. Garuda digambarkan sebagai kendaraan (wahana) Dewa Wisnu. Dalam agama Hindu, dewa Wisnu merupakan salah satu dari tiga dewa utama (trimurti) yang dipercaya sebagai Sang Pemelihara Alam Semesta. Garuda seringkali dilukiskan memiliki kepala, sayap, ekor dan moncong burung elang serta tubuh, tangan dan kaki seorang manusia. Garuda digunakan sebagai lambang kerajaan Airlangga pada abad ke-11 Masehi. Prasasti-prasasti yang dikeluarkan di masa pemerintahan Airlangga kerap menggunakan lambang Garuda yang dipahat di bagian puncak prasasti yang dikenal dengan sebutan Garudamukha lancana. Lambang garuda dipakai pula oleh raja-raja kerajaan Janggala yang dianggap penerus kerajaan Airlangga."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/figurin-perunggu-museum-nasional.jpg",
+        "nama": "Figurin Perunggu",
+        "deskripsi": "Patung perunggu ini menggambarkan penari-penari yang bergaya dinamis. Gaya patung-patung tersebut, seakan-akan menggambarkan babak sebuah tarian. Patung bergaya dinamis ini merupakan salah satu dari Sembilan buah patung yang ditemukan di Bangkinang, Riau. Terdapat lingkaran di atas kepalanya, sebagai kaitan. Kemungkinan digunakan sebagai bandul kalung dan sebagai benda upacara keagamaan."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/gelang-aceh-museum-nasional.jpg",
+        "nama": "Gelang Aceh",
+        "deskripsi": "Gelang ini dikenakan oleh perempuan Alas sebagai pelengkap dari busana tradisional saat upacara adat yang bersifat formal. Biasanya dikombinasikan dengan kalung dan anting."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/kendi-bulan-sabit-museum-nasional.jpg",
+        "nama": "Kendi Bulan Sabit",
+        "deskripsi": "Kendi porselen berwarna biru dan putih ini berbentuk bulan sabit dengan cerat yang muncul dari tengah. Cerat digunakan untuk menuang air atau cairan lain ke luar atau ke dalam kendi . Ujung kedua kendi dihias dengan perak berbentuk kerucut . Tak pernah ditemukan lagi di manapun kendi berbentuk seperti ini, sehingga diperkirakan kendi ini dibuat berdasarkan pesanan khusus pada zaman Dinasti Ming."
+      },
+      {
+        "gambar": "/public/images/museum-nasional/keris-museum-nasional.jpg",
+        "nama": "Keris",
+        "deskripsi": "Keris, tombak, pedang dan senjata berpamor lainnya disebut pula tosan aji (besi yang bernilai tinggi dan dimuliakan). Keris ini merupakan keris dhapur Kebo Lajer, pamor tambal. Bilah kerisnya menunjukkan tangguh Cirebon pasca Majapahit abad XVI. Keris ini populer pada masyarakat petani dipedesaan. Simbol kekuatan rakyat yang tulus dan penurut. Keris Indonesia ditetapkan sebagai warisan budaya dunia pada tanggal 25 November 2005 sebagai the Masterpiece of Oral and Intangible Heritage of Humanity, yang kemudian terinskripsi dalam Representative List of Humanity UNESCO pada tahun 2009."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nama": "Museum Basoeki Abdullah",
+    "deskripsi": "Museum yang didedikasikan untuk pelukis ternama Indonesia, Basoeki Abdullah, menampilkan karya seni, lukisan, dan barang pribadi beliau.",
+    "lokasi": "Jl. Keuangan Raya No.19, Cilandak Bar., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430",
+    "gambar": "/images/museum/museum-basoeki-abdullah.jpeg",
+    "background": "/public/images/museum-basoeki-abdullah/museum-basoeki-abdullah-tampak-dalam.jpeg",
+    "koleksi": [
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/abdullah-surio-subroto-museum-basoeki-abdullah.jpg",
+        "nama": "Abdullah Surio Subroto",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/dari-goresan-pertama-ibu-tien-soeharto-museum-basoeki-abdullah.jpg",
+        "nama": "Dari Goresan Pertama Ibu Tien Soeharto",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/ibu-tien-soeharto-museum-basoeki-abdullah.jpg",
+        "nama": "Ibu Tien Soeahrto",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/potret-diri-basoeki-abdullah-museum-basoeki-abdullah.jpg",
+        "nama": "Potret Diri Basoeki Abdullah",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/pratiwi-sudharmono-astronot-indonesia-museum-basoeki-abdullah.jpg",
+        "nama": "Pratiwi Sudharmono (Astronot Indonesia)",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/ratnasari-museum-basoeki-abdullah.jpg",
+        "nama": "Ratnasari (Dewi Soekarno)",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/ratu-juliana-museum-basoeki-abdullah.jpg",
+        "nama": "Ratu Juliana",
+        "deskripsi": "-"
+      },
+      {
+        "gambar": "/public/images/museum-basoeki-abdullah/sketsa-wajah-wanita-sendu-museum-basoeki-abdullah.jpg",
+        "nama": "Sketsa Wajah Wanita Sendu",
+        "deskripsi": "-"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nama": "Museum Satria Mandala",
+    "deskripsi": "Museum Satria Mandala adalah museum sejarah perjuangan Tentara Nasional Indonesia yang terletak di Jalan Gatot Subroto Kav. 14, Jakarta Selatan. Museum yang diresmikan pada tahun 1972 oleh mantan Presiden Indonesia, Soeharto ini awalnya adalah rumah dari salah satu istri mantan Presiden Indonesia, Soekarno, yaitu istrinya yang bernama Ratna Sari Dewi Soekarno.",
+    "lokasi": "Jl. Gatot Subroto No.14, RT.6/RW.1, Kuningan Bar., Kec. Mampang Prpt., Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12710",
+    "gambar": "/images/museum/museum-satria-mandala.jpg",
+    "background": "/public/images/museum-satria-mandala/museum-satria-mandala-tampak-depan.jpg",
+    "koleksi": [
+      {
+        "gambar": "/public/images/museum-satria-mandala/pesawat-a-4-skyhawk-museum-satria-mandala.jpg",
+        "nama": "Pesawat A-4 Skyhawk",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/pesawat-b-25-michell-1-museum-satria-mandala.jpg",
+        "nama": "Pesawat B-25 Michell 1",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/helikopter-mil-mi-4-hound-museum-satria-mandala.jpg",
+        "nama": "Helikopter Mil MI-4-Hound",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/tank-m3-stuart-museum-satria-mandala.jpg",
+        "nama": "Tank M3 Stuart",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/pesawat-l-4j-piper-cub-museum-satria-mandala.jpg",
+        "nama": "Pesawat L-4J-Piper Cub",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/pesawat-uf-1-albatros-ir-0117-museum-satria-mandala.jpg",
+        "nama": "Pesawat UF-1-Albatros-IR 0117",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/pesawat-p-51-mustang-museum-satria-mandala.jpg",
+        "nama": "Pesawat P-51 Mustang",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-satria-mandala/pesawat-yokosuka-k5y-museum-satria-mandala.jpg",
+        "nama": "Pesawat K5Y Yokosuka",
+        "deskripsi": null
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nama": "Museum Bank Indonesia",
+    "deskripsi": "Museum Bank Indonesia adalah sebuah museum sejarah dan budaya yang terletak di Kelurahan Pinangsia, Kecamatan Taman Sari, Kota Jakarta Barat, Indonesia. Pendirian Museum Bank Indonesia ditetakan oleh Dewan Gubernur Bank Indonesia dengan tujuan untuk melestarikan gedung bersejarah milik Bank Indonesia di Kota Tua Jakarta sekaligus memperkenalkan peran Bank Indonesia dalam sejarah bangsa Indonesia.",
+    "lokasi": "Jl. Pintu Besar Utara No.3, RT.4/RW.6, Pinangsia, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11110",
+    "gambar": "/images/museum/museum-bank-indonesia.webp",
+    "background": "/public/images/museum-bank-indonesia/museum-bank-indonesia-tampak-dalam.jpg",
+    "koleksi": [
+      {
+        "gambar": "/public/images/museum-bank-indonesia/dinara-museum-bank-indonesia.png",
+        "nama": "Dinara",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/dukaton-museum-bank-indonesia.png",
+        "nama": "Dukaton",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/gobog-majapahit-museum-bank-indonesia.png",
+        "nama": "Gobog Majapahit",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/kasha-banten-museum-bank-indonesia.png",
+        "nama": "Kasha Banten",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/keueh-aceh-museum-bank-indonesia.png",
+        "nama": "Keueh Aceh",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/ma-perak-museum-bank-indonesia.png",
+        "nama": "Ma Perak",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/real-batu-sumenep-museum-bank-indonesia.png",
+        "nama": "Real Batu Sumenep",
+        "deskripsi": null
+      },
+      {
+        "gambar": "/public/images/museum-bank-indonesia/stuiver-museum-bank-indonesia.png",
+        "nama": "Stuiver",
+        "deskripsi": null
+      }
+    ]
+  }
+]
