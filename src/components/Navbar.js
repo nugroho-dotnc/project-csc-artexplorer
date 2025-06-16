@@ -14,7 +14,7 @@ const NavLink = ({ label, link }) => {
   );
 };
 
-export default function Navbar() {
+export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const router = useRouter();
@@ -76,3 +76,4 @@ export default function Navbar() {
     </header>
   );
 }
+
