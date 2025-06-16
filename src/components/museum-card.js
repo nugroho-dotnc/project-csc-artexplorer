@@ -2,29 +2,19 @@ import React from 'react';
 
 const MuseumCard = ({ image, title, desc, link }) => {
   return (
-    // 'group' memungkinkan kita untuk mengubah style child element saat parent di-hover
-    <a 
-      href={link} 
-      className="group relative w-[300px] h-[400px] rounded-lg overflow-hidden shadow-md"
-    >
-      <img 
-        src={image} 
-        alt={title}
-        className="w-full h-full object-cover brightness-75 
-                   group-hover:brightness-50 group-hover:scale-105 
-                   transition-all ease-in-out duration-500"
-      />
-      <div 
-        className="absolute bottom-0 w-full p-4 
-                   bg-gradient-to-t from-black/80 via-black/60 to-transparent 
-                   text-white"
+    <a href={link}>
+      <div
+        className="h-[28rem] w-80 rounded-xl relative transition-transform duration-300 ease-in-out hover:-translate-y-2 bg-cover bg-center"
+        style={{ backgroundImage: `url(${image})` }}
       >
-        <h3 className="text-2xl font-bold line-clamp-1">
-          {title}
-        </h3>
-        <p className="text-base mt-1 line-clamp-2">
-          {desc}
-        </p>
+        <div className="absolute bottom-0 h-28 w-full bg-black/60 p-2 overflow-hidden">
+          <h1 className="text-primary-100 line-clamp-1 text-2xl">
+            {title}
+          </h1>
+          <p className="text-lg text-primary-100 line-clamp-2 w-full mt-2">
+            {desc}
+          </p>
+        </div>
       </div>
     </a>
   );
