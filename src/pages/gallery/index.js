@@ -5,7 +5,7 @@ import GalleryCard from "../../components/gallery-card";
 const Gallery = () => {
     const [data, setData] = useState([]);
 
-    // Logika untuk fetch data dari file JSON tetap dipertahankan
+   
     const fetchData = async () => {
         try {
             const response = await fetch('/data/museum.json');
@@ -22,27 +22,19 @@ const Gallery = () => {
     
     return (
         <>
-            {/* Wrapper utama, flex dan justify-center untuk menengahkan container */}
-            <div className="flex w-full justify-center">
-                {/* Menggantikan .gallery-container, dibuat responsif dan terpusat */}
-                <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 p-4 md:max-w-[1600px] md:p-8 mt-24 mb-32">
-                    
-                    {/* Menggantikan .gallery-image */}
-                    <div
-                        className="relative h-48 w-full bg-cover bg-center md:h-72"
-                        // URL gambar sepertinya salah (CONTACT.jpg), tapi saya pertahankan sesuai file asli
-                        style={{ backgroundImage: "url('/images/CONTACT.jpg')" }}
-                    >
-                        {/* Menggantikan .overlay */}
-                        <div className="absolute inset-0 flex h-full w-full items-center justify-center bg-black/60">
-                            {/* Judul dengan font size responsif */}
-                            <h1 className="text-3xl font-bold text-white md:text-4xl">
-                                All Museum Galleries
-                            </h1>
+            <div className="flex flex-col w-full justify-center">
+                <div
+                        className="h-96 md:h-96 w-full mt-16 md:mt-16 bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: "url('/images/museum-detail-background-gelap.png')" }}>
+                        <div className="w-full h-full bg-[#000]/60 text-primary flex flex-col justify-center items-center">
+                            <div className="flex flex-col justify-center items-center gap-6">
+                                <h1 className="text-2xl md:text-5xl font-bold text-center text-shadow-sm">
+                                   Museum Collection
+                               </h1>
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Konten galeri utama */}
+                </div>
+                <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 p-4 md:max-w-[1600px] md:p-8 mt-24 mb-32">
                     <div className="mt-8 flex flex-col gap-16">
                         {
                             data.map((value, index) => (
