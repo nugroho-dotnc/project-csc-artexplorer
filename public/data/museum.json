@@ -5,45 +5,45 @@
     "deskripsi": "Museum Bank Indonesia adalah sebuah museum sejarah dan budaya yang terletak di Kelurahan Pinangsia, Kecamatan Taman Sari, Kota Jakarta Barat, Indonesia. Pendirian Museum Bank Indonesia ditetakan oleh Dewan Gubernur Bank Indonesia dengan tujuan untuk melestarikan gedung bersejarah milik Bank Indonesia di Kota Tua Jakarta sekaligus memperkenalkan peran Bank Indonesia dalam sejarah bangsa Indonesia.",
     "lokasi": "Jl. Pintu Besar Utara No.3, RT.4/RW.6, Pinangsia, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11110",
     "gambar": "/images/museum/museum-bank-indonesia.webp",
-    "background": "/public/images/museum-bank-indonesia/museum-bank-indonesia-tampak-dalam.jpg",
+    "background": "/uploads/museum/museum-bank-indonesia-tampak-dalam.jpg",
     "koleksi": [
       {
-        "gambar": "/public/images/museum-bank-indonesia/dinara-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/dinara-museum-bank-indonesia.png",
         "nama": "Dinara",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/dukaton-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/dukaton-museum-bank-indonesia.png",
         "nama": "Dukaton",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/gobog-majapahit-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/gobog-majapahit-museum-bank-indonesia.png",
         "nama": "Gobog Majapahit",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/kasha-banten-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/kasha-banten-museum-bank-indonesia.png",
         "nama": "Kasha Banten",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/keueh-aceh-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/keueh-aceh-museum-bank-indonesia.png",
         "nama": "Keueh Aceh",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/ma-perak-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/ma-perak-museum-bank-indonesia.png",
         "nama": "Ma Perak",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/real-batu-sumenep-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/real-batu-sumenep-museum-bank-indonesia.png",
         "nama": "Real Batu Sumenep",
         "deskripsi": null
       },
       {
-        "gambar": "/public/images/museum-bank-indonesia/stuiver-museum-bank-indonesia.png",
+        "gambar": "/uploads/koleksi/stuiver-museum-bank-indonesia.png",
         "nama": "Stuiver",
         "deskripsi": null
       }

@@ -7,7 +7,7 @@ import InputTextArea from "@/components/input-textarea";
 export default function Home() {
   return (
     <div >
-      <main className="flex flex-col gap-4">
+      <main className="flex flex-col gap-4 bg-white">
         <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
             <div className="w-full h-full flex items-center justify-center bg-[#000]/40">
               <div className="flex flex-col gap-6 justify-center items-center">
@@ -82,8 +82,8 @@ export default function Home() {
                     </div>
                     <div
                         className="h-48 md:h-64 w-full bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: "url('/images/CONTACT.jpg')" }}
-                    ></div>
+                        style={{ backgroundImage: "url('/images/CONTACT.jpg')" }}>
+                    </div>
                     <div className="grid w-full grid-cols-1 gap-16 md:grid-cols-2 md:gap-32">
                         
                         <div className="col-span-1 flex flex-col gap-2 text-secondary md:gap-6">
@@ -97,18 +97,18 @@ export default function Home() {
                             <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
                                 <div className="w-full">
                                     <h2 className="font-bold">Contact</h2>
-                                    <p className="text-sm md:text-balance">Naufal - 0851-7407-1072</p>
-                                    <p className="text-sm">Nugroho - 0895-2313-3302</p>
-                                    <p className="text-sm">Muhammad Reza Hafizzi - 0892739238</p>
+                                    <p className="text-sm xl:text-lg md:text-balance">Naufal - 0851-7407-1072</p>
+                                    <p className="text-sm xl:text-lg">Nugroho - 0895-2313-3302</p>
+                                    <p className="text-sm xl:text-lg">Muhammad Reza Hafizzi - 0892739238</p>
                                 </div>
                                 <div className="w-full">
                                     <h2 className="font-bold">Email</h2>
-                                    <p className="break-words text-sm">Naufal - naufalbintangpradana@gmail.com</p>
-                                    <p className="break-words text-sm">Nugroho - nuganuca17@gmail.com</p>
+                                    <p className="break-words text-sm xl:text-lg">Naufal - naufalbintangpradana@gmail.com</p>
+                                    <p className="break-words text-sm xl:text-lg">Nugroho - nuganuca17@gmail.com</p>
                                 </div>
                                 <div className="w-full">
                                     <h2 className="font-bold">Location</h2>
-                                    <p className="text-sm">Universitas Indonesia, Jl. Prof. DR. G.A. Siwabessy, Kukusan, Beji, Depok City, West Java 16425</p>
+                                    <p className="text-sm xl:text-lg">Universitas Indonesia, Jl. Prof. DR. G.A. Siwabessy, Kukusan, Beji, Depok City, West Java 16425</p>
                                 </div>
                                 <div className="w-full">
                                     <h2 className="font-bold">Social</h2>

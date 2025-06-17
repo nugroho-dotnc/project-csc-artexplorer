@@ -35,7 +35,7 @@ export const Navbar = () => {
   const navLinksLeft = (
     <>
       <NavLink label="Home" link="/" />
-      <NavLink label="Contact" link="/contact" />
+      <NavLink label="Museums" link="/museums" />
     </>
   );
 
