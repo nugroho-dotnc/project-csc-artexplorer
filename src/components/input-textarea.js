@@ -13,6 +13,7 @@ const InputTextArea = ({ id, placeholder, rows = 4 }) => {
                    focus:outline-none focus:ring-0 focus:border-yellow-600
                    placeholder:text-[#725D3B]/60"
       ></textarea>
+      <hr></hr>
     </div>
   );
 };

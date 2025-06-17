@@ -7,12 +7,13 @@ const InputText = ({ id, placeholder }) => {
         type="text" 
         id={id} 
         placeholder={placeholder}
-        className="font-serif w-full border-none border-b-2 border-[#725D3B] 
-                   bg-transparent text-[#725D3B] 
-                   py-2 px-0 text-base 
-                   focus:outline-none focus:ring-0 focus:border-yellow-600
+        className="font-serif w-full border-none border-b-2 border-secondary 
+                   bg-transparent text-secondary
+                   py-2 text-base 
+                   focus:outline-none
                    placeholder:text-[#725D3B]/60"
       />
+      <hr></hr>
     </div>
   );
 };
