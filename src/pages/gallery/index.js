@@ -52,9 +52,6 @@ const Gallery = () => {
                                         {value.nama}
                                     </h1>
                                     <hr/>
-                                    {/* Menggantikan .daftar-koleksi
-                                      Grid dibuat responsif: 1 kolom di mobile, 2 di tablet, 4 di desktop.
-                                    */}
                                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                                         {
                                             value.koleksi.map((item, itemIndex) => (
