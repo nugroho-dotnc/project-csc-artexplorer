@@ -7,7 +7,7 @@ import InputTextArea from "@/components/input-textarea";
 export default function Home() {
   return (
     <div >
-      <main className="flex flex-col gap-4">
+      <main className="flex flex-col gap-4 bg-white">
         <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
             <div className="w-full h-full flex items-center justify-center bg-[#000]/40">
               <div className="flex flex-col gap-6 justify-center items-center">

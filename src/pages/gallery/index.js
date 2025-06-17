@@ -22,7 +22,7 @@ const Gallery = () => {
     
     return (
         <>
-            <div className="flex flex-col w-full justify-center">
+            <div className="flex flex-col w-full justify-center bg-white">
                 <div
                         className="h-96 md:h-96 w-full mt-16 md:mt-16 bg-cover bg-center bg-no-repeat"
                         style={{ backgroundImage: "url('/images/museum-detail-background-gelap.png')" }}>
