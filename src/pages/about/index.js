@@ -1,11 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Pastikan Anda menempatkan gambar Anda di dalam folder /public/img/
-// Contoh: /public/img/gambar.png
-//          /public/img/visibility.png
-//          ...dst
-
 const ArtExplorerPage = () => {
   return (
     <div className="flex flex-col min-h-screen items-start relative bg-white font-playfair">
@@ -21,7 +16,7 @@ const ArtExplorerPage = () => {
       </nav>
 
       {/* Content Container */}
-      <main className="flex flex-col w-full items-start gap-[52px] py-8 px-64">
+      <main className="flex flex-col w-full items-start gap-[52px] py-8 px-48">
         {/* About Us Section */}
         <section className="flex flex-col items-start gap-5 w-full">
           <div className="flex justify-center w-full">
@@ -37,7 +32,7 @@ const ArtExplorerPage = () => {
         </section>
 
         {/* Visi Misi Section */}
-        <section className="flex w-full max-w-[1066px] mx-auto items-start gap-[52px]">
+        <section className="flex w-full mx-auto items-start gap-[52px]">
           {/* Gambar */}
           <div 
             className="w-[461px] h-[849px] bg-cover bg-center" 
@@ -56,7 +51,7 @@ const ArtExplorerPage = () => {
                   width={48}
                   height={48}
                 />
-                <h2 className="text-xl font-bold text-secondary text-center">Visi</h2>
+                <h2 className="text-3xl font-bold text-secondary text-center">Visi</h2>
               </div>
               <div className="flex items-start gap-3 w-full">
                 <p className="text-base text-justify text-secondary">
@@ -76,7 +71,7 @@ const ArtExplorerPage = () => {
                   width={48}
                   height={48} 
                 />
-                <h2 className="text-xl font-bold text-secondary text-center">Misi</h2>
+                <h2 className="text-3xl font-bold text-secondary text-center">Misi</h2>
               </div>
               <div className="flex items-start gap-3 w-full">
                 <p className="text-base text-justify text-secondary">
@@ -96,7 +91,7 @@ const ArtExplorerPage = () => {
                   width={48}
                   height={48}
                 />
-                <h2 className="text-xl font-bold text-secondary text-center">Nilai</h2>
+                <h2 className="text-3xl font-bold text-secondary text-center">Nilai</h2>
               </div>
               <div className="flex items-start gap-3 w-full">
                 <p className="text-base text-justify text-secondary">
@@ -112,7 +107,7 @@ const ArtExplorerPage = () => {
       </main>
 
       {/* Team Section / Footer */}
-      <footer className="flex flex-col items-center gap-10 py-12 px-24 w-full bg-[#363636]">
+      <footer className="flex flex-col items-center gap-10 py-20 px-24 w-full bg-[#363636]">
         <div className="flex flex-col items-center w-full">
           <h2 className="text-[40px] font-bold text-primary w-fit">Anggota Tim</h2>
         </div>
