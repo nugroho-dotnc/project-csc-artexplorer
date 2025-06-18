@@ -1,3 +1,5 @@
+import AdminLayout from "@/components/admin-layout";
+import CustomerLayout from "@/components/customer-layout";
 import MuseumCard from "@/components/museum-card";
 import React from "react";
 
@@ -5,7 +7,8 @@ import React from "react";
 const Museums = () => {
     return (
         <>
-           <div className="h-screen w-full flex flex-col justify-start items-center">
+           <CustomerLayout>
+            <div className="h-screen w-full flex flex-col justify-start items-center">
                 <div className="flex w-full flex-col justify-center items-center gap-8  mb-32">
                     <div
                         className="h-96 md:h-96 w-full mt-16 md:mt-16 bg-cover bg-center bg-no-repeat"
@@ -31,6 +34,7 @@ const Museums = () => {
                     </div>
                 </div>
            </div>
+           </CustomerLayout>
         </>
     );
 };

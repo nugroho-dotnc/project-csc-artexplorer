@@ -22,11 +22,11 @@ export default async function handler(req, res) {
 
   else if (req.method === 'POST') {
     try {
-      const { full_name, email, subject, message } = req.body;
+      const { fullName, email, subject, message } = req.body;
 
       const newFeedback = await prisma.feedback.create({
         data: {
-          full_name,
+          fullName,
           email,
           subject,
           message,

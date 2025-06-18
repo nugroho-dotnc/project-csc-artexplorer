@@ -22,7 +22,7 @@ export default function AdminSidebar() {
                 />
               </svg>
               <a
-                href="/admin/dashboard"
+                href="/admin/"
                 className="text-white hover:text-gray-300"
               >
                 Dashboard

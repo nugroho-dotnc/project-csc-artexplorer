@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     try {
       const uploadDir = path.join(process.cwd(), '/public/uploads/museum');
       await fs.mkdir(uploadDir, { recursive: true }); // Buat folder jika belum ada
-
+      
       const form = formidable({
         uploadDir,
         keepExtensions: true,

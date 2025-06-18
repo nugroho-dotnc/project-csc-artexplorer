@@ -2,6 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import GalleryCard from '../../components/gallery-card';
+import AdminLayout from '@/components/admin-layout';
+import CustomerLayout from '@/components/customer-layout';
 
 function MuseumDetail() {
   const router = useRouter();
@@ -52,7 +54,8 @@ function MuseumDetail() {
   }
 
   return (
-    <div className="mt-16 md:mt-16">
+    <CustomerLayout>
+      <div className="mt-16 md:mt-16">
       {/* Page 1 - Hero Section */}
       <div 
         className="flex justify-center md:justify-end items-center h-screen w-screen overflow-hidden bg-no-repeat bg-cover bg-center bg-scroll md:bg-fixed"
@@ -105,6 +108,7 @@ function MuseumDetail() {
         </div> */}
       </div>
     </div>
+    </CustomerLayout>
   );
 }
 

@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import {Navbar} from "@/components/Navbar";
 import { Playfair_Display } from "next/font/google";
 
 const playfairDisplay = Playfair_Display({
@@ -8,12 +7,9 @@ const playfairDisplay = Playfair_Display({
 });
 
 export default function App({ Component, pageProps }) {
-  return (
-    <div  className={`${playfairDisplay.className}`}>
-    <Navbar/>
-    <main>
+  return ( 
+    <main className={`${playfairDisplay.className}`}>
       <Component {...pageProps}/>
     </main>
-    </div>
   );
 }

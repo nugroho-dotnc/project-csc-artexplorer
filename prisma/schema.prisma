@@ -8,27 +8,29 @@ datasource db {
 }
 
 model Museum {
-  id_museum   Int          @id @default(autoincrement())
+  idMuseum   Int          @id @default(autoincrement())
   name        String
   description String
   location    String
-  image_url       String
+  imageUrl       String
+  isPublic Boolean @default(true)
+  ticketPrice Float? 
   artGallery  ArtGallery[] 
   orderTicket OrderTicket[]
 }
 
 model ArtGallery {
   id            Int     @id @default(autoincrement())
-  image_url      String
+  imageUrl      String
   title         String
   description   String
   museumId      Int
-  museum        Museum  @relation(fields: [museumId], references: [id_museum])
+  museum        Museum  @relation(fields: [museumId], references: [idMuseum])
 }
 
 model Feedback {
-  id_feedback Int    @id @default(autoincrement())
-  full_name   String
+  idFeedback Int    @id @default(autoincrement())
+  fullName   String
   email       String
   subject     String
   message     String
@@ -36,12 +38,12 @@ model Feedback {
 }
 
 model OrderTicket {
-  id_order    Int     @id @default(autoincrement())
-  Oid_museum  Int     @unique
-  jumlah      Int
+  idOrder    Int     @id @default(autoincrement())
+  OidMuseum  Int     @unique
+  qty      Int
+  total Float
   name        String
   email       String
   accepted    Boolean @default(false)
-
-  museum      Museum  @relation(fields: [Oid_museum], references: [id_museum])
+  museum      Museum  @relation(fields: [OidMuseum], references: [idMuseum])
 }

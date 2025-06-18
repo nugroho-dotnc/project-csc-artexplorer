@@ -1,11 +1,12 @@
 // pages/api/museums/[id].js
 import { PrismaClient } from "@prisma/client";
+import fs from 'fs/promises';
+import path from 'path';
 
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   const { id } = req.query;
-
   const idInt = parseInt(id);
   if (isNaN(idInt)) {
     return res.status(400).json({ success: false, message: "Invalid ID" });
@@ -57,6 +58,20 @@ export default async function handler(req, res) {
 
     case 'DELETE':
       try {
+        const museum = await prisma.museum.findUnique({
+          where: { id_museum: idInt },
+        });
+
+        if (!museum) {
+          return res.status(404).json({ success: false, message: 'Museum not found' });
+        }
+
+        // Hapus file gambar jika ada
+        if (museum.image_url) {
+          const absolutePath = path.resolve('./public/', museum.image_url);
+          await fs.rm(absolutePath, { force: true });
+        }
+
         await prisma.museum.delete({
           where: { id_museum: idInt },
         });
@@ -79,7 +94,6 @@ export default async function handler(req, res) {
   }
 }
 
-// Body parser fallback untuk PUT (karena Next.js Pages Router tidak auto-parse untuk PUT)
 async function parseBody(req) {
   const buffers = [];
   for await (const chunk of req) {

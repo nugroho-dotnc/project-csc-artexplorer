@@ -25,14 +25,24 @@ export default async function handler(req, res) {
 
   else if (req.method === 'POST') {
     try {
-      const { name, description, location, image_url } = req.body;
-
+      const { name, description, location, imageUrl, isPublic,  ticketPrice} = req.body;
+      if(name == null || description == null || location == null || imageUrl == null){
+        return res.status(400).json(
+          {
+            success: false,
+            message: 'field name or description or location or image is required',
+          }
+        )
+      }
+      
       const newMuseum = await prisma.museum.create({
         data: {
           name,
           description,
           location,
-          image_url,
+          imageUrl,
+          isPublic,
+          ticketPrice
         },
       });
 

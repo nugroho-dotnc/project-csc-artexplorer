@@ -26,14 +26,14 @@ export default async function handler(req, res) {
 
   else if (req.method === 'POST') {
     try {
-      const { museum_id, image_url, title, description } = req.body;
+      const { museumId, imageUrl, title, description } = req.body;
 
       const newFeedback = await prisma.artGallery.create({
         data: {
           title: title,
           description: description,
-          image_url: image_url,
-          museumId: museum_id
+          image_url: imageUrl,
+          museumId: museumId
         },
       });
 

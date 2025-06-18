@@ -1,10 +1,12 @@
+import CustomerLayout from '@/components/customer-layout';
 import Image from 'next/image';
 import Link from 'next/link';
 
 
 const ArtExplorerPage = () => {
   return (
-    <div className="flex flex-col min-h-screen items-start relative bg-white font-playfair">
+      <CustomerLayout>
+        <div className="flex flex-col min-h-screen items-start relative bg-white font-playfair">
       {/* Navbar */}
       <nav className="flex w-full items-center justify-between py-4 px-6 md:px-8 bg-navbar-bg relative">
         <div className="text-3xl md:text-4xl font-bold text-primary">ArtExplorer</div>
@@ -145,6 +147,7 @@ const ArtExplorerPage = () => {
         </div>
       </footer>
     </div>
+      </CustomerLayout>
   );
 };
 

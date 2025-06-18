@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import GalleryCard from "../../components/gallery-card";
+import AdminLayout from "@/components/admin-layout";
+import CustomerLayout from "@/components/customer-layout";
 
 const Gallery = () => {
     const [data, setData] = useState([]);
@@ -22,7 +24,8 @@ const Gallery = () => {
     
     return (
         <>
-            <div className="flex flex-col w-full justify-center bg-white">
+            <CustomerLayout>
+                <div className="flex flex-col w-full justify-center bg-white">
                 <div
                         className="h-96 md:h-96 w-full mt-16 md:mt-16 bg-cover bg-center bg-no-repeat"
                         style={{ backgroundImage: "url('/images/museum-detail-background-gelap.png')" }}>
@@ -57,6 +60,7 @@ const Gallery = () => {
                     </div>
                 </div>
             </div>
+            </CustomerLayout>
         </>
     );
 };
