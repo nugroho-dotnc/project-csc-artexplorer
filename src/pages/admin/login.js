@@ -3,16 +3,12 @@ import React from "react";
 export default function Login() {
   return (
     <>
-      {/* TAMPILAN MOBILE (FORM RATA ATAS) */}
-      {/* Akan disembunyikan di layar medium (md) ke atas */}
       <div
         className="w-screen h-screen md:hidden relative bg-cover bg-center"
         style={{ backgroundImage: `url("/uploads/museum/login.jpg")` }}
       >
-        {/* Area Form ("Bottom Sheet") */}
         <div className="absolute bottom-0 left-0 right-0 h-[75%] bg-white rounded-t-[24px] p-8 flex flex-col">
           
-          {/* PERUBAHAN DI SINI: hapus 'justify-center' dan tambahkan 'pt-8' */}
           <div className="w-full max-w-md mx-auto flex flex-col flex-1 pt-8">
             <h1 className="text-4xl font-serif text-center text-[#5D4037] mb-6">
               Login
@@ -34,7 +30,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* TAMPILAN DESKTOP (tetap sama) */}
       <div className="w-screen h-screen hidden md:flex relative">
         <div className="w-1/2 h-full bg-[url(/uploads/museum/login.jpg)] bg-center bg-cover rounded-r-[16px]"></div>
         <div className="w-1/2 h-full flex flex-col justify-center items-center">
