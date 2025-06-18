@@ -4,7 +4,7 @@ export default function AdminLayout({ children }) {
     return (
         <div className="flex justify-between min-h-screen bg-gray-100">
             <AdminSidebar />
-            <div className="flex-1 p-4">
+            <div className="flex-1 p-4 overflow-auto ml-64">
                 {children}
             </div>
         </div>

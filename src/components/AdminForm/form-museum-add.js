@@ -26,13 +26,6 @@ export default function MuseumAddForm({ onSubmit }) {
             <hr className="h-px w-4/5 my-4 mx-auto" />
                 <FileField id="museum-image" label="Museum Image" />
                 <TextField
-                    type="image"
-                    id="museum-name"
-                    label="Museum Name"
-                    value={name}
-                    required
-                />
-                <TextField
                     id="museum-name"
                     label="Museum Name"
                     value={name}
