@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin-layout";
+import Button from "@/components/AdminForm/button";
 
 export default function Feedback() {
   return (
@@ -48,12 +49,10 @@ export default function Feedback() {
                 </td>
                 <td>2023-01-01</td>
                 <td>
-                  <button
-                    type="button"
-                    className="bg-secondary-100 text-white px-8 py-2 rounded-md shadow-md font-medium cursor-pointer"
-                  >
-                    Detail
-                  </button>
+                  <Button 
+                    label="Hapus"
+                    variant="delete"
+                  />
                 </td>
               </tr>
 
@@ -70,12 +69,10 @@ export default function Feedback() {
                 <td>Superbass</td>
                 <td>2021-04-01</td>
                 <td>
-                  <button
-                    type="button"
-                    className="bg-secondary-100 text-white px-8 py-2 rounded-md shadow-md font-medium cursor-pointer"
-                  >
-                    Detail
-                  </button>
+                  <Button 
+                    label="Hapus"
+                    variant="delete"
+                  />
                 </td>
               </tr>
             </tbody>

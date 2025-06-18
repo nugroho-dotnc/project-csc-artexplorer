@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/admin-layout";
+import Button from "@/components/AdminForm/button";
 
 export default function OrderList() {
   return (
@@ -54,12 +55,16 @@ export default function OrderList() {
                     </p>
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="bg-secondary-100 text-white px-8 py-2 rounded-md shadow-md font-medium cursor-pointer mt-6 hover:bg-secondary justify-center"
-                >
-                  Konfirmasi
-                </button>
+                <div className="mt-6 flex justify-between gap-4">
+                  <Button
+                    label="Decline"
+                    variant="delete"
+                  />
+                  <Button
+                    label="Accept"
+                    variant="add"
+                  />
+                </div>
               </div>
             </div>
           </div>

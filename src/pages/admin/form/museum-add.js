@@ -6,10 +6,7 @@ export default function MuseumAdd() {
     };
 
     return (
-        <div className="p-8">
-            <h1 className="text-3xl font-bold mb-4">
-                Museum Add
-            </h1>
+        <div className="p-8 mt-8">
             <MuseumAddForm onSubmit={handleMuseumAdd} />
         </div>
     );
