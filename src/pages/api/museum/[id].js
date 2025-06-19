@@ -13,6 +13,7 @@ export default async function handler(req, res) {
   }
 
   switch (req.method) {
+
     case 'GET':
       try {
         const museum = await prisma.museum.findUnique({
@@ -41,12 +42,19 @@ export default async function handler(req, res) {
       try {
         const body = req.body || (await parseBody(req));
         const { name, description, location, image } = body;
+        const findMuseum = await prisma.museum.findFirst({where: {idMuseum: idInt}})
+        
+         if (image) {
+          const absolutePath = path.resolve('./public/', findMuseum.imageUrl);
+          await fs.rm(absolutePath, { force: true });
+        }
 
         const updated = await prisma.museum.update({
           where: { id_museum: idInt },
           data: { name, description, location, image },
         });
-
+        
+       
         return res.status(200).json({ success: true, data: updated });
       } catch (e) {
         return res.status(500).json({
@@ -67,8 +75,8 @@ export default async function handler(req, res) {
         }
 
         // Hapus file gambar jika ada
-        if (museum.image_url) {
-          const absolutePath = path.resolve('./public/', museum.image_url);
+        if (museum.imageUrl) {
+          const absolutePath = path.resolve('./public/', museum.imageUrl);
           await fs.rm(absolutePath, { force: true });
         }
 

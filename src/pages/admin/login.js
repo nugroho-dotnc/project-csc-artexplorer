@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useState } from "react";
 function TextInput({ className, ...props }) {
   const baseClasses = "border text-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8d6e63]";
   
@@ -8,7 +8,6 @@ function TextInput({ className, ...props }) {
 
 function Button({ children, className, ...props }) {
   const baseClasses = "text-primary font-semibold transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-2 hover:border-secondary hover:text-secondary hover:bg-white";
-  
   return (
     <button className={`${baseClasses} ${className}`} {...props}>
       {children}
@@ -18,6 +17,13 @@ function Button({ children, className, ...props }) {
 
 
 function MobileForm() {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const login = () => {
+    if(username == "admin" && password == "admin"){
+      localStorage.setItem("loggedIn", true);
+    }
+  }
   return (
     <div className="w-full max-w-md mx-auto flex flex-col flex-1 pt-8">
       <h1 className="text-4xl font-serif text-center text-[#5D4037] mb-6">
@@ -27,14 +33,17 @@ function MobileForm() {
         type="text"
         placeholder="Username"
         className="w-full border-secondary py-3 px-4 rounded-xl mb-4"
+        onChange ={(e)=> setUsername(e.target.value)}
       />
       <TextInput
         type="password"
         placeholder="Password"
         className="w-full border-secondary py-3 px-4 rounded-xl mb-6"
+        onChange = {(e)=> setPassword(e.target.value)}
       />
       <Button 
         className="w-full bg-[#5D4037] py-3 rounded-xl hover:shadow-lg hover:bg-opacity-90"
+        onClick={login}
       >
         Sign In
       </Button>
@@ -43,6 +52,14 @@ function MobileForm() {
 }
 
 function DesktopForm() {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const login = () => {
+    if(username == "admin" && password == "admin"){
+      localStorage.setItem("loggedIn", true);
+      console.log("astagfirullah")
+    }
+  }
   return (
     <div className="w-1/2 h-full flex flex-col justify-center items-center">
       <h1 className="text-4xl text-secondary">Login</h1>
@@ -53,14 +70,17 @@ function DesktopForm() {
         type="text"
         placeholder="Username"
         className="w-[80%] border-2 border-secondary mt-8 py-2 px-2 rounded-[8px]"
+        onChange ={(e)=> setUsername(e.target.value)}
       />
       <TextInput
         type="password"
         placeholder="Password"
         className="w-[80%] border-2 border-secondary mt-4 py-2 px-2 rounded-[8px]"
+        onChange = {(e)=> setPassword(e.target.value)}
       />
       <Button 
         className="w-[80%] mt-4 bg-secondary py-2 rounded-[8px] hover:shadow-md hover:bg-opacity-90"
+        onClick={login}
       >
         Sign In
       </Button>

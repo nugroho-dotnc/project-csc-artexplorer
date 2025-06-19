@@ -68,7 +68,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="w-full h-10 flex justify-end text-primary text-lg">
-                            <a className="cursor-pointer hover:underline">
+                            <a className="cursor-pointer hover:underline" href="/museums">
                             Selengkapnya →
                             </a>
                         </div>

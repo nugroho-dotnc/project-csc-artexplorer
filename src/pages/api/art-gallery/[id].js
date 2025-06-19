@@ -1,5 +1,7 @@
 // pages/api/feedbacks/[id].js
 import { PrismaClient } from "@prisma/client";
+import fs from 'fs/promises';
+import path from 'path';
 
 const prisma = new PrismaClient();
 
@@ -8,10 +10,13 @@ export default async function handler(req, res) {
 
   if (req.method === 'DELETE') {
     try {
-      await prisma.artGallery.delete({
+      const deleted = await prisma.artGallery.delete({
         where: { id: parseInt(id) }, 
       });
-
+       if (deleted.imageUrl) {
+                const absolutePath = path.resolve('./public/', deleted.imageUrl);
+                await fs.rm(absolutePath, { force: true });
+          }         
       return res.status(200).json({
         success: true,
         message: "Deleted successfully",

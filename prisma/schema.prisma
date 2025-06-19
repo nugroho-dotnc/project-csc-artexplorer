@@ -17,6 +17,8 @@ model Museum {
   ticketPrice Float? 
   artGallery  ArtGallery[] 
   orderTicket OrderTicket[]
+
+  events events[]
 }
 
 model ArtGallery {
@@ -46,4 +48,14 @@ model OrderTicket {
   email       String
   accepted    Boolean @default(false)
   museum      Museum  @relation(fields: [OidMuseum], references: [idMuseum])
+}
+
+model events {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  startDate DateTime
+  endDate DateTime
+  museumId Int @unique
+  museum Museum @relation(fields: [museumId], references: [idMuseum])
 }
