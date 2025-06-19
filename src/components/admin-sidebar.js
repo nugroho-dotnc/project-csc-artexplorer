@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'; // Import useRouter
 
 export default function AdminSidebar({ onLinkClick }) {
-  const router = useRouter(); // Inisialisasi useRouter
+  const router = useRouter();
   const logout = () => {
     localStorage.setItem("loggedIn", false)
   }

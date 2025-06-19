@@ -1,5 +1,5 @@
-export default function Button({ label, type = "submit", variant = "default", onClick }) {
-    let baseClass = "text-white px-8 py-2 mt-2 rounded shadow transition cursor-pointer ";
+export default function Button({ label, type = "submit", variant = "default", onClick, px = "px-4", py = "py-2" }) {
+    let baseClass = `text-white ${px} ${py} mt-2 rounded shadow transition cursor-pointer `;
     let variantClass = "";
 
     switch (variant) {
