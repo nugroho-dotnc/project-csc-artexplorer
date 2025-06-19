@@ -65,7 +65,7 @@ export const Navbar = () => {
 
   const navLinksDataRight = [
     { label: "About", link: "/about" },
-    { label: "Gallery", link: "/gallery" },
+    { label: "Events", link: "/events" },
   ];
 
   return (

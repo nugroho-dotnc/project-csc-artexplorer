@@ -8,14 +8,14 @@ export default function OrderList() {
       className="xs:p-32 sm:p-28 md:p-24 
          bg-zinc-100 w-full min-h-dvh"
     >
-      <div className="bg-secondary p-6 rounded-lg shadow-md">
+      <div className="bg-secondary mx-4 md:mx-0 p-1 md:p-6 rounded-lg shadow-md mt-16 md:mt-0">
         <div className="overflow-x-auto relative rounded-lg shadow-md bg-slate-50">
           <div className="p-8">
             <h1 className="text-center text-3xl font-bold">Order List</h1>
             <hr className="h-px w-4/5 my-4 mx-auto" />
 
-            <div className="overflow-x-auto relative flex gap-8 mt-8">
-              <div className="py-4 px-6 bg-primary-100 rounded-md shadow-lg border-t border-l border-secondary ">
+            <div className="overflow-x-auto relative flex gap-8 mt-8 p-4">
+              <div className="py-4 px-6 bg-slate-100 rounded-md shadow-lg border-t border-l border-secondary ">
                 <h2 className="text-xl font-bold">Namanya</h2>
                 <h3 className="text-xs font-light text-gray-700">
                   @Emailnya.example.com
@@ -55,14 +55,10 @@ export default function OrderList() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-6 flex justify-between gap-4">
+                <div className="mt-6 flex justify-end gap-4">
                   <Button
-                    label="Decline"
+                    label="Delete"
                     variant="delete"
-                  />
-                  <Button
-                    label="Accept"
-                    variant="add"
                   />
                 </div>
               </div>

@@ -8,9 +8,9 @@ export default function Feedback() {
       className="xs:p-32 sm:p-28 md:p-24 
          bg-zinc-100 w-full min-h-dvh"
     >
-      <div className="bg-secondary p-6 rounded-lg shadow-md">
+      <div className="bg-secondary mx-4 md:mx-0 p-1 md:p-6 rounded-lg shadow-md mt-16 md:mt-0">
         <div className="overflow-x-auto relative rounded-lg shadow-md bg-slate-50">
-          <table className="w-full text-sm text-left text-gray-600">
+          <table className="md:w-full text-sm text-left text-gray-600">
             <caption className="p-8">
               <h1 className="text-3xl font-bold text-gray-900">
                 List of Feedbacks
