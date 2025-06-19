@@ -5,28 +5,27 @@ import Button from "@/components/AdminForm/button";
 import FileField from "./file-field";
 import ButtonToggle from "./button-toggle";
 
-export default function MuseumAddForm({ onSubmit }) {
+export default function MuseumAddForm({ onSubmit, imageChangeHandle, imagePreviewUrl }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
-    const [price, setPrice] = useState("");
+    const [price, setPrice] = useState(0);
     const [isRecommended, setIsRecommended] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         onSubmit({ name, description, location, price, isRecommended });
-
         setName("");
         setDescription("");
         setLocation("");
-        setPrice("");
+        setPrice(0);
         setIsRecommended(false);
     }
 
     return (
 
         <form onSubmit={handleSubmit}
-            className="space-y-6 mt-4 py-4 px-16 bg-zinc-50 rounded shadow-md w-1/2 mx-auto">
+            className="space-y-6 mt-4 py-4 px-16 bg-zinc-50 rounded shadow-md w-1/2 mx-auto text-secondary">
             <div className="flex justify-between items-center mt-6">
                 <button type="button" onClick={() => window.history.back()} className="cursor-pointer top-4 p-2 rounded-full bg-white shadow hover:bg-gray-100 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -41,7 +40,7 @@ export default function MuseumAddForm({ onSubmit }) {
                 </div>
             </div>
             <hr className="h-px w-4/5 my-8 mx-auto" />
-                <FileField id="museum-image" label="Museum Image" />
+                <FileField id="museum-image" label="Museum Image" onChange={imageChangeHandle} name={"file"}/>
                 <TextField
                     id="museum-name"
                     label="Museum Name"

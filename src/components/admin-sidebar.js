@@ -26,27 +26,26 @@ export default function AdminSidebar({ onLinkClick }) {
   ];
 
   return (
-    // Hapus properti 'fixed', 'top-0', 'left-0', 'shadow-lg', 'z-50'
-    // properti ini akan diatur oleh AdminLayout
+   
     <div className="bg-black text-primary w-64 min-h-screen p-4 flex flex-col justify-between">
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4 text-center">ArtExplorer</h2>
-        <hr className="h-px w-4/5 my-4 mx-auto bg-gray-700 border-0" /> {/* Tambah warna untuk hr */}
+        <hr className="h-px w-4/5 my-4 mx-auto bg-gray-700 border-0" />
         <div className="">
           <ul className="space-y-8 mt-8 px-6">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  // Gunakan router.pathname untuk menentukan tautan aktif
+                 
                   className={`flex items-center gap-4 p-2 rounded-lg transition-colors duration-200
                     ${router.pathname === item.href
-                      ? 'bg-gray-700 text-white font-semibold' // Style untuk aktif
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white' // Style untuk non-aktif
+                      ? 'bg-gray-700 text-white font-semibold' 
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white' 
                     }`}
-                  onClick={onLinkClick} // Panggil fungsi dari prop saat link diklik
+                  onClick={onLinkClick} 
                 >
-                  {item.icon} {/* Render ikon */}
+                  {item.icon} 
                   {item.label}
                 </Link>
               </li>

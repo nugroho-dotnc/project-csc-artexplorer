@@ -3,14 +3,12 @@ import MuseumCard from "@/components/museum-card";
 import InputText from "@/components/input-text";
 import InputTextArea from "@/components/input-textarea";
 import CustomerLayout from "@/components/customer-layout";
-
-
-export default function Home() {
-  return (
-    <CustomerLayout>
-        <div >
-        <main className="flex flex-col gap-4 bg-white">
-            <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+const HeroSection = () => {
+    return (
+        <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
                 <div className="w-full h-full flex items-center justify-center bg-[#000]/40">
                 <div className="flex flex-col gap-6 justify-center items-center">
                     <h1 className="text-primary text-shadow-sm font-bold text-center text-4xl md:text-5xl text-shadow-primary-100">
@@ -25,7 +23,12 @@ export default function Home() {
                 </div>
                 </div>
             </section>
-            <section className="min-h-screen flex w-full justify-center items-center" id="welcome">
+    )
+}
+
+const WelcomeSection = () => {
+    return (
+        <section className="min-h-screen flex w-full justify-center items-center" id="welcome">
             <div className="w-[90%] gap-4 flex flex-col-reverse md:flex-row">
                 <div className="w-full flex flex-col gap-6">
                     <div className="text-secondary flex flex-col border-b-2 pb-4 border-secondary gap-4">
@@ -44,8 +47,13 @@ export default function Home() {
                     <img src="/images/HEAD.png" className="h-[24rem] w-[24rem] md:w-[32rem] md:h-[32rem] object-cover"></img>
                 </div>
             </div>
-            </section>
-            <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
+        </section>
+    )
+}
+
+const ReccomendSection = () => {
+    return (
+         <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
                 <div className="w-full h-full items-center justify-center bg-[#000]/60 flex flex-col">
                     <div className="w-[90%] flex flex-col gap-4">
                         <div className="text-primary text-shadow-xs flex flex-col gap-2 text-shadow-primary-100">
@@ -75,7 +83,32 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section>
+    )
+}
+
+const ContactSection = () => {
+    const [formFill, setFormFill] = useState({
+        fullName: "",
+        email: "",
+        subject: "",
+        message: ""
+    })
+    const submitForm = async () => {
+        // console.log(formFill)
+        await axios.post('/api/feedback', formFill).then(
+            (res) => {
+                if(res.data.success){
+                    toast.success(res.data.message)
+                }else{
+                    toast.error(res.data.message)
+                }
+            }
+        ).catch((e)=> toast.error(e.response.data.message)).finally(
+            setFormFill({ fullName: "", email: "", subject: "", message: "" })
+        )
+    }
+    return (
+        <section>
             <div className="flex w-full justify-center items-start min-h-screen">
                     <div className="flex w-[90%] flex-col gap-8 mt-24 md:mt-32 mb-32">
                         <div className="w-full">
@@ -137,19 +170,35 @@ export default function Home() {
                                     <h2 className="text-center font-semibold text-2xl">
                                         Feedback
                                     </h2>
-                                    <InputText placeholder={"Full Name"} />
-                                    <InputText placeholder={"Email"} />
-                                    <InputText placeholder={"Subject"} />
-                                    <InputTextArea placeholder={"Text"} />
-                                    <button className="rounded-lg bg-[#725D3B] py-2 px-3 font-['playfair-display'] text-lg text-primary-100">
-                                        Submit
-                                    </button>
+                                        <InputText placeholder={"Full Name"} onChange = {(e)=> setFormFill({ ...formFill, fullName: e.target.value })} value={formFill.fullName} />
+                                        <InputText placeholder={"Email"} onChange = {(e)=> setFormFill({ ...formFill, email: e.target.value })} value={formFill.email} />
+                                        <InputText placeholder={"Subject"} onChange = {(e)=> setFormFill({ ...formFill, subject: e.target.value })} value={formFill.subject} />
+                                        <InputTextArea
+                                            placeholder={"Text"}
+                                            onChange={(e) => setFormFill({ ...formFill, message: e.target.value })}
+                                            value={formFill.message}
+                                            />
+                                        <button className="rounded-lg bg-[#725D3B] py-2 px-3 font-['playfair-display'] text-lg text-primary-100" onClick={submitForm}>
+                                            Submit
+                                        </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+    )
+}
+
+export default function Home() {
+  return (
+    <CustomerLayout>
+        <div >
+        <main className="flex flex-col gap-4 bg-white">
+            <HeroSection/>
+            <WelcomeSection/>
+            <ReccomendSection/>
+            <ContactSection/>
         </main>
         </div>
     </CustomerLayout>

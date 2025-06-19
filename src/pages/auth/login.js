@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
 
 function TextInput({ className, ...props }) {
   const baseClasses = "border text-secondary rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8d6e63]";
@@ -68,6 +67,13 @@ function LoginForm({ isMobile = false }) {
 }
 
 export default function Login() {
+  const router = useRouter();
+  useEffect(()=>{
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    if(isLoggedIn === "true"){
+        router.push('/admin')
+    }
+  }, [])
   return (
     <>
       <div
