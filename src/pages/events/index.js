@@ -12,7 +12,7 @@ const Events = () => {
             eventType: "Exhibitions",
             dateRange: "19 - 25 June",
             year: "2025",
-            imageUrl: "/uploads/museum/event-dummy.jpg"
+            imageUrl: "/uploads/events/hiroshige.webp"
         },
         {
             id: 2,
@@ -21,7 +21,7 @@ const Events = () => {
             eventType: "Exhibitions",
             dateRange: "26 June - 2 July",
             year: "2025",
-            imageUrl: "/uploads/museum/event-dummy.jpg"
+            imageUrl: "/uploads/events/van-gogh.webp"
         },
         {
             id: 3,
@@ -30,7 +30,7 @@ const Events = () => {
             eventType: "Special Event",
             dateRange: "3 - 10 July",
             year: "2025",
-            imageUrl: "/uploads/museum/event-dummy.jpg"
+            imageUrl: "/uploads/events/monet.webp"
         },
         {
             id: 4,
@@ -63,13 +63,6 @@ const Events = () => {
                     <div className="text-secondary text-3xl font-bold mt-28 border-secondary border-b-1">
                         <h1>Events and Exhibitions</h1>
                     </div>
-                    
-                    {/* --- INI ADALAH CONTAINER GRID YANG BARU --- */}
-                    {/* - `grid`: Mengaktifkan layout grid.
-                      - `grid-cols-1`: Default 1 kolom untuk mobile (di bawah 768px).
-                      - `md:grid-cols-2`: 2 kolom untuk layar medium (768px ke atas).
-                      - `gap-8`: Memberi jarak antar kartu.
-                    */}
                     <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Langsung map dari array 'events', tidak perlu nested map */}
                         {events.map((event) => (

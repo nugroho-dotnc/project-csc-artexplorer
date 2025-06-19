@@ -23,6 +23,12 @@ export default async function handler(req, res) {
   else if (req.method === 'POST') {
     try {
       const { fullName, email, subject, message } = req.body;
+      if(fullName == "" || email == "" || subject == "" || message == "") {
+        return res.status(403).json({
+          success: false,
+          message: 'Failed to send feedback, please fill all fields',
+        })
+      }
 
       const newFeedback = await prisma.feedback.create({
         data: {
@@ -30,7 +36,7 @@ export default async function handler(req, res) {
           email,
           subject,
           message,
-          date: new Date(), // Gunakan objek Date yang valid
+          date: new Date(), 
         },
       });
 

@@ -4,15 +4,11 @@ import AdminMobileNav from '../components/admin-mobile-nav';
 import { useRouter } from 'next/router';
 export default function AdminLayout({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter()
   useEffect(()=>{
       const isLoggedIn = sessionStorage.getItem('isLoggedIn');
       if(isLoggedIn !==  'true' || isLoggedIn  === null) {
         router.push('/auth/login')
-        setIsLoading(false);
-      }else{
-        setIsLoading(false);
       }
   }, []);
 
@@ -34,20 +30,8 @@ export default function AdminLayout({ children }) {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-  const LoadingView = ()  => {
-    return (
-      <button type="button" class="bg-secondary text-primary ..." disabled>
-      <svg class="mr-3 size-5 animate-spin ..." viewBox="0 0 24 24"></svg>
-      Processing…
-    </button>
-    )
-  }
+
   return (
-    isLoading?
-    <div className='h-screen w-full flex justify-center items-center'>
-      <LoadingView/>
-    </div>
-    :
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100 ">
       <AdminMobileNav onMenuToggle={toggleSidebar} />
 

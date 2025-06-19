@@ -41,17 +41,17 @@ export default async function handler(req, res) {
     case 'PUT':
       try {
         const body = req.body || (await parseBody(req));
-        const { name, description, location, image } = body;
+        const { name, description, location, imageUrl, isReccomended,  ticketPrice} = body;
         const findMuseum = await prisma.museum.findFirst({where: {idMuseum: idInt}})
         
-         if (image) {
+         if (imageUrl) {
           const absolutePath = path.resolve('./public/', findMuseum.imageUrl);
           await fs.rm(absolutePath, { force: true });
         }
 
         const updated = await prisma.museum.update({
           where: { id_museum: idInt },
-          data: { name, description, location, image },
+          data: { name, description, location, image, isReccomended, ticketPrice },
         });
         
        

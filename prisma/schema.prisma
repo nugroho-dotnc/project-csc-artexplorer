@@ -13,8 +13,8 @@ model Museum {
   description String
   location    String
   imageUrl       String
-  isPublic Boolean @default(true)
   ticketPrice Float? 
+  isRecomended Boolean @default(false)
   artGallery  ArtGallery[] 
   orderTicket OrderTicket[]
 

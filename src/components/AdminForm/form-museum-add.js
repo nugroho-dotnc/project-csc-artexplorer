@@ -5,23 +5,22 @@ import Button from "@/components/AdminForm/button";
 import FileField from "./file-field";
 import ButtonToggle from "./button-toggle";
 
-export default function MuseumAddForm({ onSubmit }) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [price, setPrice] = useState("");
-  const [isRecommended, setIsRecommended] = useState(false);
+export default function MuseumAddForm({ onSubmit, imageChangeHandle, imagePreviewUrl }) {
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [location, setLocation] = useState("");
+    const [price, setPrice] = useState(0);
+    const [isRecommended, setIsRecommended] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit({ name, description, location, price, isRecommended });
-
-    setName("");
-    setDescription("");
-    setLocation("");
-    setPrice("");
-    setIsRecommended(false);
-  };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onSubmit({ name, description, location, price, isRecommended });
+        setName("");
+        setDescription("");
+        setLocation("");
+        setPrice(0);
+        setIsRecommended(false);
+    }
 
   return (
     <form
