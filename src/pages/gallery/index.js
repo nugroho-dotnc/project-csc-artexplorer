@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import GalleryCard from "../../components/gallery-card";
-import AdminLayout from "@/components/admin-layout";
 import CustomerLayout from "@/components/customer-layout";
 
 const Gallery = () => {
