@@ -50,7 +50,7 @@ export default function AdminLayout({ children }) {
       )}
 
       {/* Main Content Area */}
-      <div className={`flex-1 p-4 overflow-auto
+      <div className={`flex flex-1 p- overflow-auto
         transition-all duration-300 ease-in-out`}>
         {children}
       </div>
