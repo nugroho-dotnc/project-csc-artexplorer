@@ -51,7 +51,6 @@ export default function AdminLayout({ children }) {
 
       {/* Main Content Area */}
       <div className={`flex-1 p-4 overflow-auto
-        ${isSidebarOpen ? 'md:ml-0' : 'md:ml-64'}
         transition-all duration-300 ease-in-out`}>
         {children}
       </div>
