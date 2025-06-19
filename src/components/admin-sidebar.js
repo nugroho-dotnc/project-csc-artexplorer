@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'; // Import useRouter
 export default function AdminSidebar({ onLinkClick }) {
   const router = useRouter();
   const logout = () => {
-    localStorage.setItem("loggedIn", false)
+    sessionStorage.setItem("isLoggedIn", "false")
+    router.reload()
   }
   const navItems = [
     { label: 'Dashboard', href: '/admin/', icon: ( // Tambahkan icon sebagai prop untuk kemudahan

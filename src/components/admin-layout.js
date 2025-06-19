@@ -1,9 +1,20 @@
 import { useState, useEffect } from 'react';
 import AdminSidebar from './admin-sidebar';
 import AdminMobileNav from '../components/admin-mobile-nav'; 
-
+import { useRouter } from 'next/router';
 export default function AdminLayout({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter()
+  useEffect(()=>{
+      const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+      if(isLoggedIn !==  'true' || isLoggedIn  === null) {
+        router.push('/auth/login')
+        setIsLoading(false);
+      }else{
+        setIsLoading(false);
+      }
+  }, []);
 
   useEffect(() => {
     if (isSidebarOpen) {
@@ -23,9 +34,21 @@ export default function AdminLayout({ children }) {
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
-
+  const LoadingView = ()  => {
+    return (
+      <button type="button" class="bg-secondary text-primary ..." disabled>
+      <svg class="mr-3 size-5 animate-spin ..." viewBox="0 0 24 24"></svg>
+      Processing…
+    </button>
+    )
+  }
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+    isLoading?
+    <div className='h-screen w-full flex justify-center items-center'>
+      <LoadingView/>
+    </div>
+    :
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100 ">
       <AdminMobileNav onMenuToggle={toggleSidebar} />
 
       <div className="hidden md:flex">
@@ -49,7 +72,6 @@ export default function AdminLayout({ children }) {
         ></div>
       )}
 
-      {/* Main Content Area */}
       <div className={`flex-1 p-4 overflow-auto
         transition-all duration-300 ease-in-out`}>
         {children}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InputText = ({ id, placeholder }) => {
+const InputText = ({ id, placeholder, ...props }) => {
   return (
     <div className="relative w-full mb-6">
       <input 
@@ -12,6 +12,7 @@ const InputText = ({ id, placeholder }) => {
                    py-2 text-base 
                    focus:outline-none
                    placeholder:text-[#725D3B]/60"
+        {...props}
       />
       <hr></hr>
     </div>
