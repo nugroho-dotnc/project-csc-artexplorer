@@ -44,7 +44,7 @@ const WelcomeSection = () => {
                             </p>
                         </div>
                         <p className="ms-8 text-lg md:text-xl text-justify text-secondary">
-                            Situs ini hadir sebagai panduan kurasi untuk museum-museum terbaik di Jabodetabek — tempat di mana setiap ruang menyimpan kisah, dan setiap karya mengundang rasa kagum. Baik Anda pecinta seni, penikmat sejarah, maupun pencari inspirasi akhir pekan, di sinilah perjalanan budaya Anda bermula. Dari museum megah berskala nasional hingga galeri tersembunyi yang memesona, kami hadirkan rekomendasi yang layak Anda kunjungi. Karena masa lalu layak untuk dilihat, dan Anda pantas untuk terinspirasi.
+                                                        This site is a curated guide to the best museums in Jabodetabek - places where every space holds a story, and every work invites a sense of awe. Whether you're an art lover, history buff or weekend inspiration seeker, this is where your cultural journey begins. From grand national museums to charming hidden galleries, we've got you covered. Because the past deserves to be seen, and you deserve to be inspired.
                         </p>
                     </div>
                     <div className="w-full flex justify-center hover:skew-1 hover:scale-110 transition-all ">
@@ -112,7 +112,7 @@ const ReccomendSection = () => {
                         </div>
                         <div className="w-full h-10 flex justify-end text-primary text-lg">
                             <a className="cursor-pointer hover:underline" href="/museums">
-                            Selengkapnya →
+                            More →
                             </a>
                         </div>
                     </div>
@@ -164,7 +164,7 @@ const ContactSection = () => {
                                 </h1>
                                 <hr></hr>
                                 <p>
-                                    Terima kasih atas kunjungan Anda. Jika ada hal yang ingin Anda diskusikan—baik itu pertanyaan, kolaborasi, maupun dukungan layanan—silakan hubungi kami melalui formulir kontak atau informasi yang tercantum. Kami berkomitmen untuk memberikan respon terbaik dalam waktu sesingkat mungkin.
+                                    Thank you for your visit. If there is anything you would like to discuss-whether it's a question, collaboration, or service support-please contact us via the contact form or the information listed. We are committed to providing the best response in the shortest time possible.
                                 </p>
                                 <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
                                     <div className="w-full">

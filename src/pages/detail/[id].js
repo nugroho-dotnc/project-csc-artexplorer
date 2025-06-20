@@ -74,7 +74,7 @@ function MuseumDetail() {
     e.preventDefault();
     console.log('Rating submitted:', ratingForm);
     // Di sini bisa ditambahkan logic untuk submit ke API
-    alert('Terima kasih atas review Anda!');
+    alert('Thank you for your rating!');
     
     // Reset form
     setRatingForm({
@@ -131,8 +131,8 @@ function MuseumDetail() {
               href="#daftar-koleksi" 
               className="text-[#847253] font-bold bg-[#FFFBD9] w-fit py-3 px-6 md:py-3 md:px-5 rounded-lg mt-6 md:mt-4 no-underline transition-all duration-300 ease-in-out cursor-pointer border-none text-base self-center md:self-start shadow-[0_4px_8px_rgba(0,0,0,0.2)] hover:bg-[#f0e8d9] hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.3)] active:translate-y-0 active:shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
             >
-              <span className="md:hidden">Jelajahi Koleksi</span>
-              <span className="hidden md:inline">Lihat Koleksi</span>
+              <span className="md:hidden">Explore Collections</span>
+              <span className="hidden md:inline">View Collections</span>
             </a>
           </div>
         </div>
@@ -142,7 +142,7 @@ function MuseumDetail() {
       <div className="flex flex-col justify-center items-center bg-white w-screen min-h-[60vh] text-[#725D3B] py-8 md:py-10">
         <div className="border-b-2 border-[#725D3B] mb-6 md:mb-8 text-center pb-2 md:pb-3 px-5 md:px-0" id="daftar-koleksi">
           <h1 className="m-0 font-bold tracking-wide text-[28px] md:text-[32px] pb-2 md:pb-3">
-            Daftar Koleksi
+            Collection List
           </h1>
         </div>
 
@@ -189,7 +189,7 @@ function MuseumDetail() {
 
             <InputTextArea
               id="visitor-review"
-              placeholder="Bagikan pengalaman Anda mengunjungi museum ini..."
+              placeholder="Share your experience visiting this museum..."
               rows={5}
               value={ratingForm.review}
               onChange={(e) => handleRatingChange('review', e.target.value)}

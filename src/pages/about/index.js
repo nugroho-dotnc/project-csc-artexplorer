@@ -58,16 +58,16 @@ const ArtExplorerPage = () => {
             <section className="flex flex-col items-start gap-5 w-full">
               <div className="flex justify-center w-full">
                 <h1 className="text-3xl md:text-[40px] font-bold text-secondary w-fit text-center">
-                  Tentang Kami
+                  About Us
                 </h1>
               </div>
               <div className="flex justify-center w-full">
                 <p className="text-lg md:text-xl text-center text-secondary">
-                  Platform digital ini memperluas akses terhadap koleksi seni
-                  dan budaya museum. Jelajahi galeri virtual kami yang kaya akan
-                  detail, kenali visi dan misi institusi di halaman &#34;Tentang
-                  Kami&#34;, dan hubungi kami melalui formulir kontak. Situs ini
-                  dirancang agar responsif dan mudah diakses di semua perangkat.
+                  This digital platform expands access to
+                  art collections and museum culture. Explore our rich virtual galleries in
+                  detail, get to know the institution's vision and mission on our About
+                  page, and get in touch via the contact form. This site
+                  is designed to be responsive and easily accessible on all devices.&#34;
                 </p>
               </div>
             </section>
@@ -96,16 +96,16 @@ const ArtExplorerPage = () => {
                       height={48}
                     />
                     <h2 className="text-2xl md:text-3xl font-bold text-secondary">
-                      Visi
+                      Vision
                     </h2>
                   </div>
                   <div className="flex items-start gap-3 w-full">
                     <p className="text-base text-justify text-secondary">
-                      Visi kami adalah menjadikan ArtExplorer jembatan antara
-                      warisan dan masa depan. Kami menggunakan seni serta
-                      sejarah untuk memfasilitasi dialog kritis, menantang cara
-                      pandang, dan menginspirasi audiens global untuk ikut
-                      membentuk dunia yang lebih baik.
+                      Our vision is to make ArtExplorer the bridge between
+                      heritage and the future. We use art and
+                      history to facilitate critical dialog, challenge ways of
+                      seeing, and inspire a global audience to help
+                      shape a better world.
                     </p>
                   </div>
                 </div>
@@ -122,16 +122,16 @@ const ArtExplorerPage = () => {
                       height={48}
                     />
                     <h2 className="text-2xl md:text-3xl font-bold text-secondary">
-                      Misi
+                      Mission
                     </h2>
                   </div>
                   <div className="flex items-start gap-3 w-full">
                     <p className="text-base text-justify text-secondary">
-                      Misi ArtExplorer adalah menyediakan akses seni dan budaya
-                      yang terbuka untuk semua. Kami menciptakan program edukasi
-                      yang partisipatif dan menjalin kemitraan dengan komunitas
-                      untuk menjadi ruang inspirasi yang relevan bagi setiap
-                      orang.
+                      ArtExplorer's mission is to provide access to art and culture
+                      that is open to all. We create participatory
+                      educational programs and establish partnerships with
+                      communities to be a relevant space of inspiration for every
+                      person.
                     </p>
                   </div>
                 </div>
@@ -148,17 +148,17 @@ const ArtExplorerPage = () => {
                       height={48}
                     />
                     <h2 className="text-2xl md:text-3xl font-bold text-secondary">
-                      Nilai
+                      Values
                     </h2>
                   </div>
                   <div className="flex items-start gap-3 w-full">
                     <p className="text-base text-justify text-secondary">
-                      Dengan rasa tanggung jawab mendalam untuk menjaga warisan
-                      budaya, ArtExplorer beroperasi atas dasar integritas dalam
-                      setiap penelitian dan interaksi. Komitmen inilah yang
-                      mendorong kami untuk selalu menyajikan keunggulan dalam
-                      setiap pameran dan layanan, demi memberikan pengalaman
-                      yang tak terlupakan bagi Anda.
+                      With a deep sense of responsibility to preserve
+                      cultural heritage, ArtExplorer operates on the basis of integrity in
+                      every research and interaction. It is this commitment that
+                      drives us to always present excellence in
+                      every exhibition and service, in order to provide you with an unforgettable
+                      experience.
                     </p>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ const ArtExplorerPage = () => {
         <footer className="flex flex-col items-center gap-10 py-12 md:py-20 px-6 md:px-24 w-full bg-[#363636]">
           <div className="flex flex-col items-center w-full">
             <h2 className="text-3xl md:text-[40px] font-bold text-primary w-fit text-center">
-              Anggota Tim
+              Team Members
             </h2>
           </div>
           <div className="flex flex-col items-center gap-10 w-full">
