@@ -1,6 +1,7 @@
 import React from "react";
 import CustomerLayout from "@/components/customer-layout";
 import EventCard from "@/components/event-card";
+import Scroll from "@/components/Scroll";
 
 const Events = () => {
     // Sample event data - tidak perlu diubah
@@ -67,7 +68,8 @@ const Events = () => {
                         {/* Langsung map dari array 'events', tidak perlu nested map */}
                         {events.map((event) => (
                             // Setiap item grid akan memiliki tinggi 400px
-                            <div key={event.id} className="h-[400px]">
+                            <Scroll>
+                                <div key={event.id} className="h-[400px]">
                                 <EventCard
                                     title={event.title}
                                     subtitle={event.subtitle}
@@ -78,6 +80,7 @@ const Events = () => {
                                     onDetailsClick={() => handleDetailsClick(event.id)}
                                 />
                             </div>
+                            </Scroll>
                         ))}
                     </div>
 

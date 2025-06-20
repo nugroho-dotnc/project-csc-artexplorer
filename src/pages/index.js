@@ -6,11 +6,13 @@ import CustomerLayout from "@/components/customer-layout";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Scroll from "@/components/Scroll";
 const HeroSection = () => {
     return (
+        <Scroll>
         <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
-                <div className="w-full h-full flex items-center justify-center bg-[#000]/40">
-                <div className="flex flex-col gap-6 justify-center items-center fade-in-up">
+            <div className="w-full h-full flex items-center justify-center bg-[#000]/40">
+                <div className="flex flex-col gap-6 justify-center items-center">
                     <h1 className="text-primary text-shadow-sm font-bold text-center text-4xl md:text-5xl text-shadow-primary-100">
                         Bienvenue au <br/> Sanctuaire des Arts
                     </h1>
@@ -21,51 +23,55 @@ const HeroSection = () => {
                     Read More
                     </a>
                 </div>
-                </div>
-            </section>
+            </div>
+        </section>
+        </Scroll>
     )
 }
 
 const WelcomeSection = () => {
     return (
-        <section className="min-h-screen flex w-full justify-center items-center" id="welcome">
-            <div className="w-[90%] gap-4 flex flex-col-reverse md:flex-row">
-                <div className="w-full flex flex-col gap-6">
-                    <div className="text-secondary flex flex-col border-b-2 pb-4 border-secondary gap-4 fade-in-left">
-                        <h1 className="text-3xl md:text-5xl font-bold ">
-                            Welcome to the Museum
-                        </h1>
-                        <p className="text-xl md:text-2xl font-normal">
-                            A timeless sanctuary of art, history, and human spirit.
+        <Scroll>
+            <section className="min-h-screen flex w-full justify-center items-center" id="welcome">
+                <div className="w-[90%] gap-4 flex flex-col-reverse md:flex-row">
+                    <div className="w-full flex flex-col gap-6">
+                        <div className="text-secondary flex flex-col border-b-2 pb-4 border-secondary gap-4">
+                            <h1 className="text-3xl md:text-5xl font-bold ">
+                                Welcome to the Museum
+                            </h1>
+                            <p className="text-xl md:text-2xl font-normal">
+                                A timeless sanctuary of art, history, and human spirit.
+                            </p>
+                        </div>
+                        <p className="ms-8 text-lg md:text-xl text-justify text-secondary">
+                            Situs ini hadir sebagai panduan kurasi untuk museum-museum terbaik di Jabodetabek — tempat di mana setiap ruang menyimpan kisah, dan setiap karya mengundang rasa kagum. Baik Anda pecinta seni, penikmat sejarah, maupun pencari inspirasi akhir pekan, di sinilah perjalanan budaya Anda bermula. Dari museum megah berskala nasional hingga galeri tersembunyi yang memesona, kami hadirkan rekomendasi yang layak Anda kunjungi. Karena masa lalu layak untuk dilihat, dan Anda pantas untuk terinspirasi.
                         </p>
                     </div>
-                    <p className="ms-8 text-lg md:text-xl text-justify text-secondary fade-in-up">
-                        Situs ini hadir sebagai panduan kurasi untuk museum-museum terbaik di Jabodetabek — tempat di mana setiap ruang menyimpan kisah, dan setiap karya mengundang rasa kagum. Baik Anda pecinta seni, penikmat sejarah, maupun pencari inspirasi akhir pekan, di sinilah perjalanan budaya Anda bermula. Dari museum megah berskala nasional hingga galeri tersembunyi yang memesona, kami hadirkan rekomendasi yang layak Anda kunjungi. Karena masa lalu layak untuk dilihat, dan Anda pantas untuk terinspirasi.
-                    </p>
+                    <div className="w-full flex justify-center hover:skew-1 hover:scale-110 transition-all ">
+                        <img src="/images/HEAD.png" className="h-[24rem] w-[24rem] md:w-[32rem] md:h-[32rem] object-cover"></img>
+                    </div>
                 </div>
-                <div className="w-full flex justify-center hover:skew-2 hover:scale-110 transition-all">
-                    <img src="/images/HEAD.png" className="h-[24rem] w-[24rem] md:w-[32rem] md:h-[32rem] object-cover"></img>
-                </div>
-            </div>
-        </section>
-    )
+            </section>
+        </Scroll>
+    );
 }
 
 const ReccomendSection = () => {
     return (
-         <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
+        <Scroll>
+            <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
                 <div className="w-full h-full items-center justify-center bg-[#000]/60 flex flex-col">
                     <div className="w-[90%] flex flex-col gap-4">
                         <div className="text-primary text-shadow-xs flex flex-col gap-2 text-shadow-primary-100">
-                        <h1 className="text-4xl font-bold">
-                            Our Recommendation & Best Place
-                        </h1>
-                        <p className="text-lg">
-                            All the best museum in jabodetabek, will gives u best experience of arts and history
-                        </p>
-                        <hr></hr>
+                            <h1 className="text-4xl font-bold">
+                                Our Recommendation & Best Place
+                            </h1>
+                            <p className="text-lg">
+                                All the best museum in jabodetabek, will gives u best experience of arts and history
+                            </p>
+                            <hr></hr>
                         </div>
-                        <div className="w-full p-4 overflow-x-scroll fade-in-up">
+                        <div className="w-full p-4 overflow-x-scroll">
                             <div className="flex gap-2">
                                 <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
                                 <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
@@ -83,7 +89,8 @@ const ReccomendSection = () => {
                     </div>
                 </div>
             </section>
-    )
+        </Scroll>
+    );
 }
 
 const ContactSection = () => {
@@ -108,6 +115,7 @@ const ContactSection = () => {
         )
     }
     return (
+        <Scroll>
         <section>
             <div className="flex w-full justify-center items-start min-h-screen">
                     <div className="flex w-[90%] flex-col gap-8 mt-24 md:mt-32 mb-32">
@@ -140,6 +148,7 @@ const ContactSection = () => {
                                         <h2 className="font-bold">Email</h2>
                                         <p className="break-words text-sm xl:text-lg">Naufal - naufalbintangpradana@gmail.com</p>
                                         <p className="break-words text-sm xl:text-lg">Nugroho - nuganuca17@gmail.com</p>
+                                        <p className="break-words text-sm xl:text-lg">Reza - muhammadrezahafizzi@gmail.com</p>
                                     </div>
                                     <div className="w-full">
                                         <h2 className="font-bold">Location</h2>
@@ -165,7 +174,8 @@ const ContactSection = () => {
                                 </div>
                             </div>
 
-                            <div className="col-span-1 w-full rounded-md bg-primary-100 p-8 md:p-16">
+                            <Scroll>
+                            <div className="col-span-1 w-full rounded-md bg-primary-100 p-8 md:p-16 ">
                                 <div className="flex w-full flex-col justify-center gap-8 text-secondary">
                                     <h2 className="text-center font-semibold text-2xl">
                                         Feedback
@@ -183,11 +193,13 @@ const ContactSection = () => {
                                         </button>
                                 </div>
                             </div>
+                            </Scroll>
                         </div>
                     </div>
                 </div>
             </section>
-    )
+        </Scroll>
+    );
 }
 
 export default function Home() {
