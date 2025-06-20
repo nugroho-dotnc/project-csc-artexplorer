@@ -73,12 +73,41 @@ const ReccomendSection = () => {
                         </div>
                         <div className="w-full p-4 overflow-x-scroll">
                             <div className="flex gap-2">
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"}/>
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                rating={4.5}
+                                reviewCount={12}
+                                />
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                rating={4.5}
+                                reviewCount={12}
+                                />
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                rating={4.5}
+                                reviewCount={12}
+                                />
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                rating={4.5}
+                                reviewCount={12}
+                                />
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                rating={4.5}
+                                reviewCount={12}
+                                />
                             </div>
                         </div>
                         <div className="w-full h-10 flex justify-end text-primary text-lg">
