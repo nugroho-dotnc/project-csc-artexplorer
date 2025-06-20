@@ -4,16 +4,15 @@ import TextField from "@/components/AdminForm/text-field";
 import Button from "@/components/AdminForm/button";
 import FileField from "./file-field";
 
-export default function GalleryAddForm({ onSubmit }) {
+export default function EventEditForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ title, description });
-
-    setTitle("");
-    setDescription("");
+    onSubmit({ title, description, startDate, endDate });
   };
 
   return (
@@ -43,33 +42,49 @@ export default function GalleryAddForm({ onSubmit }) {
           </svg>
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-center">Tambah Gallery</h2>
+          <h2 className="text-2xl font-bold text-center">Edit Event</h2>
         </div>
         <div>{/* Spacer */}</div>
       </div>
 
       <hr className="h-px w-4/5 my-4 mx-auto" />
 
-      <FileField id="gallery-image" label="Gallery Image" />
-
       <TextField
-        id="gallery-title"
-        label="Gallery Title"
-        value={title}
+        id="event-title"
+        label="Event Title"
+        value={"Spirit Blossom"}
         onChange={(event) => setTitle(event.target.value)}
         required
       />
 
       <TextField
-        id="gallery-description"
+        id="event-description"
         label="Description"
         value={description}
         onChange={(event) => setDescription(event.target.value)}
         required={false}
       />
 
+      <TextField
+        id="start-date"
+        label="Start Date"
+        type="date"
+        value={startDate}
+        onChange={(event) => setStartDate(event.target.value)}
+        required
+      />
+
+      <TextField
+        id="end-date"
+        label="End Date"
+        type="date"
+        value={endDate}
+        onChange={(event) => setEndDate(event.target.value)}
+        required
+      />
+
       <div className="flex justify-center">
-        <Button label="Tambah Data" variant="add" />
+        <Button label="Simpan Perubahan" variant="edit" />
       </div>
     </form>
   );
