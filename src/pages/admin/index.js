@@ -123,15 +123,16 @@ export default function MuseumList() {
                 type="button"
                 className="bg-secondary-100 text-white px-8 py-2 hidden md:block rounded-md shadow-md font-medium cursor-pointer hover:bg-secondary"
                 href="admin/form/museum-add"
-              >
+                >
                 Tambah Data
               </a>
-              <button
+              <a
                 type="button"
                 className="bg-secondary-100 text-white px-4 py-2 block md:hidden rounded-md shadow-md font-medium cursor-pointer hover:bg-secondary"
+                href="admin/form/museum-add"
               >
                 +
-              </button>
+              </a>
             </div>
           </div>
           {

@@ -13,7 +13,7 @@ const Events = ({ events }) => {
     const router = useRouter();
 
     const handleDetailsClick = (eventId) => {
-      router.push(`/event-detail/${eventId}`);
+        router.push(`/event-detail/${eventId}`);
     };
 
     return (
@@ -51,14 +51,14 @@ export default Events;
 // getStaticProps mengambil data saat proses build
 export async function getStaticProps() {
   // Logika untuk membaca file JSON diletakkan langsung di sini
-  const filePath = path.join(process.cwd(), 'public', 'data', 'event.json');
-  const jsonData = await fs.readFile(filePath);
-  const data = JSON.parse(jsonData);
+    const filePath = path.join(process.cwd(), 'public', 'data', 'event.json');
+    const jsonData = await fs.readFile(filePath);
+    const data = JSON.parse(jsonData);
 
   // Kirim data sebagai props ke komponen 'Events'
   return {
     props: {
-      events: data,
+        events: data,
     },
   };
 }

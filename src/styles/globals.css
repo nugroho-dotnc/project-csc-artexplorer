@@ -44,50 +44,20 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fade-in-down {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(20px); }
 }
 
-@keyframes fade-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.fade-in {
+  animation: fade-in 0.6s ease-out forwards;
 }
 
-
-.fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.fade-in-up {
-  animation: fade-in-down 0.6s ease-out forwards;
-}
-
-.fade-in-left {
-  animation: fade-in-left 0.6s ease-out forwards;
+.fade-out {
+  animation: fade-out 0.6s ease-out forwards;
 }
