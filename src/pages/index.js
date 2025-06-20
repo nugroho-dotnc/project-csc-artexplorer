@@ -9,23 +9,23 @@ import axios from "axios";
 import Scroll from "@/components/Scroll";
 const HeroSection = () => {
     return (
-        <Scroll>
         <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
             <div className="w-full h-full flex items-center justify-center bg-[#000]/40">
-                <div className="flex flex-col gap-6 justify-center items-center">
-                    <h1 className="text-primary text-shadow-sm font-bold text-center text-4xl md:text-5xl text-shadow-primary-100">
-                        Bienvenue au <br/> Sanctuaire des Arts
-                    </h1>
-                    <p className="text-primary text-shadow-xs font-normal text-center text-xl md:text-2xl">
-                        Là où le passé respire encore
-                    </p>
-                    <a className="py-2 px-6 text-lg md:text-xl bg-primary w-fit rounded-full mt-6 text-secondary" href="#welcome">
-                    Read More
-                    </a>
-                </div>
+                <Scroll>
+                    <div className="flex flex-col gap-6 justify-center items-center">
+                        <h1 className="text-primary text-shadow-sm font-bold text-center text-4xl md:text-5xl text-shadow-primary-100">
+                            Bienvenue au <br/> Sanctuaire des Arts
+                        </h1>
+                        <p className="text-primary text-shadow-xs font-normal text-center text-xl md:text-2xl">
+                            Là où le passé respire encore
+                        </p>
+                        <a className="py-2 px-12 text-lg md:text-xl bg-primary/25 w-fit rounded-full mt-6 text-primary backdrop-blur-md shadow shadow-white" href="#welcome">
+                        Read More
+                        </a>
+                    </div>
+                </Scroll>
             </div>
         </section>
-        </Scroll>
     )
 }
 

@@ -1,6 +1,7 @@
 import AdminLayout from "@/components/admin-layout";
 import CustomerLayout from "@/components/customer-layout";
 import MuseumCard from "@/components/museum-card";
+import Scroll from "@/components/Scroll";
 import React from "react";
 
 
@@ -15,12 +16,14 @@ const Museums = () => {
                         style={{ backgroundImage: "url('/images/museum-detail-background-gelap.png')" }}
                     >
                         <div className="w-full h-full bg-[#000]/60 text-primary flex flex-col justify-center items-center">
+                            <Scroll>
                             <div className="flex flex-col justify-center items-center gap-6">
                                 <h1 className="text-2xl md:text-4xl font-bold text-center text-shadow-sm">
                                 Find Your Favorite Museum Here
                                </h1>
-                               <input type="text" placeholder="Search museums..." className="bg-primary/20 border-1 border-primary text-primary placeholder-primary px-6 py-3 w-80 md:w-96 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary shadow"/>
+                               <input type="text" placeholder="Search museums..." className="bg-primary/20 backdrop-blur-md shadow-white text-primary placeholder-primary px-6 py-3 w-80 md:w-96 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary shadow"/>
                             </div>
+                            </Scroll>
                         </div>
                     </div>
                     <div className="w-[80%]">

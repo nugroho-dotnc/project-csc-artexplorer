@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import CustomerLayout from "@/components/customer-layout";
 import EventCard from "@/components/event-card";
+import Scroll from "@/components/Scroll";
 // Impor modul Node.js untuk membaca file
 import path from 'path';
 import fs from 'fs/promises';
@@ -25,6 +26,7 @@ const Events = ({ events }) => {
                     </div>
                     <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                         {events.map((event) => (
+                            <Scroll>
                             <div key={event.id} className="h-[400px]">
                                 <EventCard
                                     id={event.id}
@@ -37,6 +39,7 @@ const Events = ({ events }) => {
                                     onDetailsClick={() => handleDetailsClick(event.id)}
                                 />
                             </div>
+                            </Scroll>
                         ))}
                     </div>
                     <div className="pt-24"></div>

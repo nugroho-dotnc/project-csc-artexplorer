@@ -176,8 +176,9 @@ const ArtExplorerPage = () => {
             </h2>
           </div>
           <div className="flex flex-col items-center gap-10 w-full">
-            <div className="flex flex-col md:flex-row items-stretch gap-10 md:gap-[52px] w-full">
-              <Scroll>
+            <div className="flex flex-col md:flex-row items-stretch gap-10 md:gap-[52px] w-full *:flex-1">
+              <div>
+                <Scroll>
                 {/* Team Member 1 */}
                 <div className="flex flex-col items-center gap-4 flex-1">
                   <div className="h-[435px] w-full bg-white"></div>{" "}
@@ -187,6 +188,8 @@ const ArtExplorerPage = () => {
                   </div>
                 </div>
               </Scroll>
+              </div>
+              <div>
               <Scroll>
                 {/* Team Member 2 */}
                 <div className="flex flex-col items-center gap-4 flex-1">
@@ -197,6 +200,8 @@ const ArtExplorerPage = () => {
                   </div>
                 </div>
               </Scroll>
+              </div>
+              <div>
               <Scroll>
                 {/* Team Member 3 */}
                 <div className="flex flex-col items-center gap-4 flex-1">
@@ -207,6 +212,7 @@ const ArtExplorerPage = () => {
                   </div>
                 </div>
               </Scroll>
+              </div>
             </div>
           </div>
         </footer>
