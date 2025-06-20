@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Scroll from "@/components/Scroll";
+
 const HeroSection = () => {
     return (
         <section className="h-screen bg-no-repeat bg-cover" style={{ backgroundImage: "url('/images/HERO.png')" }}>
@@ -57,6 +58,19 @@ const WelcomeSection = () => {
 }
 
 const ReccomendSection = () => {
+    const [museumData, setMuseumData] = useState([])
+    const fetchMuseum = async () =>{
+        try{
+            const res = await axios.get('/api/museum')
+            setMuseumData(res.data.data)
+        }catch(e){
+            toast.error(e.response?.data?.message??"load museum gagal!")
+        }
+    }
+    useEffect(() => {
+      fetchMuseum()
+    }, [])
+    
     return (
         <Scroll>
             <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
@@ -73,41 +87,17 @@ const ReccomendSection = () => {
                         </div>
                         <div className="w-full p-4 overflow-x-scroll">
                             <div className="flex gap-2">
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                rating={4.5}
-                                reviewCount={12}
-                                />
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                rating={4.5}
-                                reviewCount={12}
-                                />
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                rating={4.5}
-                                reviewCount={12}
-                                />
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                rating={4.5}
-                                reviewCount={12}
-                                />
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                rating={4.5}
-                                reviewCount={12}
-                                />
+                                {
+                                    museumData.map((item)=>{
+                                        return <MuseumCard 
+                                            image={item.imageUrl} 
+                                            title={item.name} 
+                                            desc={item.description} 
+                                            rating={item.rate}
+                                            reviewCount={item.totalVote}
+                                            />
+                                    })
+                                }
                             </div>
                         </div>
                         <div className="w-full h-10 flex justify-end text-primary text-lg">
