@@ -3,19 +3,22 @@ import { useState } from "react";
 import TextField from "@/components/AdminForm/text-field";
 import Button from "@/components/AdminForm/button";
 import FileField from "./file-field";
+import ImageField from "./image-field";
 
 export default function GalleryAddForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
+  const [image, setImage] = useState(null);
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ title, description });
-
+    onSubmit({ title, description, image });
     setTitle("");
     setDescription("");
+    setImage(null)
   };
-
+  const handleImageChange = (image) => {
+    setImage(image);
+  }
   return (
     <form
       onSubmit={handleSubmit}
@@ -49,8 +52,12 @@ export default function GalleryAddForm({ onSubmit }) {
       </div>
 
       <hr className="h-px w-4/5 my-4 mx-auto" />
-
-      <FileField id="gallery-image" label="Gallery Image" />
+     <div className="w-full flex  justify-center">
+         <ImageField
+          id="museum-image"
+          onChange={(file) => handleImageChange(file)} 
+        />
+     </div>
 
       <TextField
         id="gallery-title"

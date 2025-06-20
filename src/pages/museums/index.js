@@ -28,10 +28,41 @@ const Museums = () => {
                     </div>
                     <div className="w-[80%]">
                             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-center items-center">
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"} expanded={true}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"} expanded={true}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"} expanded={true}/>
-                                <MuseumCard image={"/images/museum-potrait.jpg"} title={"Museum Bangun Lawas"} desc={"ini adalah museum yang dibangun di blablabla"} expanded={true}/>
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                expanded={true}
+                                rating={4.5}
+                                reviewCount={12}
+                                />
+
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                expanded={true}
+                                rating={3.8}
+                                reviewCount={7}
+                                />
+
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                expanded={true}
+                                rating={5.0}
+                                reviewCount={25}
+                                />
+
+                                <MuseumCard 
+                                image={"/images/museum-potrait.jpg"} 
+                                title={"Museum Bangun Lawas"} 
+                                desc={"ini adalah museum yang dibangun di blablabla"} 
+                                expanded={true}
+                                rating={2.3}
+                                reviewCount={3}
+                                />
                         </div>
                     </div>
                 </div>
