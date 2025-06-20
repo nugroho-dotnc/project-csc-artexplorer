@@ -18,7 +18,7 @@ const EventDetail = ({ event }) => {
         style={{ backgroundImage: `url(${event.imageUrl})` }}
       >
         <div className="text-center p-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
+          <h1 className="text-4xl md:text-6xl font-bold text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,1,1)' }}>
             {event.title}: {event.subtitle}
           </h1>
         </div>
@@ -35,7 +35,7 @@ const EventDetail = ({ event }) => {
           </div>
         </div>
         <div className='w-full md:w-2/5 p-8 md:py-16 md:px-12 md:sticky top-0 self-start'>
-          <div className='bg-gray-50 rounded-lg p-6 space-y-6'>
+          <div className='rounded-lg p-6 space-y-6'>
             <div className='text-secondary text-2xl font-bold'>
               <h1>{event.eventType}</h1>
             </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import InputText from "@/components/input-text";
+import InputTextArea from "@/components/input-textarea";
 import { useState, useEffect } from 'react';
 import GalleryCard from '../../components/gallery-card';
 import AdminLayout from '@/components/admin-layout';
@@ -10,7 +12,15 @@ function MuseumDetail() {
   const { id } = router.query;
   const [listKoleksi, setListKoleksi] = useState([]);
   const [museum, setMuseum] = useState({});
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  
+  // Rating form states
+  const [ratingForm, setRatingForm] = useState({
+    name: '',
+    email: '',
+    rating: 5,
+    review: ''
+  });
 
   const fetchMuseum = async () => {
     try {
@@ -53,6 +63,52 @@ function MuseumDetail() {
     }
   }
 
+  const handleRatingChange = (field, value) => {
+    setRatingForm(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleSubmitRating = (e) => {
+    e.preventDefault();
+    console.log('Rating submitted:', ratingForm);
+    // Di sini bisa ditambahkan logic untuk submit ke API
+    alert('Terima kasih atas review Anda!');
+    
+    // Reset form
+    setRatingForm({
+      name: '',
+      email: '',
+      rating: 5,
+      review: ''
+    });
+  };
+
+  const StarRating = ({ rating, onRatingChange }) => {
+    return (
+      <div className="flex items-center mb-6">
+        <span className="mr-4 text-[#725D3B] font-serif text-base">Rating:</span>
+        <div className="flex">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              type="button"
+              onClick={() => onRatingChange(star)}
+              className="text-2xl mr-1 focus:outline-none transition-colors duration-200"
+              style={{
+                color: star <= rating ? '#FFD700' : '#D1D5DB'
+              }}
+            >
+              ★
+            </button>
+          ))}
+        </div>
+        <span className="ml-3 text-[#725D3B] font-serif">({rating}/5)</span>
+      </div>
+    );
+  };
+
   return (
     <CustomerLayout>
       <div className="mt-16 md:mt-16">
@@ -90,14 +146,65 @@ function MuseumDetail() {
           </h1>
         </div>
 
-        {/* <div className='bg-blue-500 w-[85%] h-96'></div> */}
-
         <div className="grid grid-cols-4 gap-6 px-6 py-4 w-full max-w-[1200px] box-border mx-auto">
           {
             listKoleksi.map((data, index)=>{
                 return <GalleryCard data={data} key={index}/>
             })
           }
+        </div>
+      </div>
+
+      {/* Page 3 - Rating Form */}
+      <div className="flex flex-col justify-center items-center bg-white w-screen min-h-[60vh] text-[#725D3B] py-8 md:py-10">
+        <div className="border-b-2 border-[#725D3B] mb-6 md:mb-8 text-center pb-2 md:pb-3 px-5 md:px-0" id="rate-museum">
+          <h1 className="m-0 font-bold tracking-wide text-[28px] md:text-[32px] pb-2 md:pb-3">
+            Rate This Museum
+          </h1>
+        </div>
+
+        <div className="w-full max-w-[600px] px-6">
+          <form onSubmit={handleSubmitRating} className="w-full">
+            <InputText
+              id="visitor-name"
+              placeholder="Nama Lengkap"
+              value={ratingForm.name}
+              onChange={(e) => handleRatingChange('name', e.target.value)}
+              required
+            />
+
+            <InputText
+              id="visitor-email"
+              placeholder="Email"
+              type="email"
+              value={ratingForm.email}
+              onChange={(e) => handleRatingChange('email', e.target.value)}
+              required
+            />
+
+            <StarRating 
+              rating={ratingForm.rating}
+              onRatingChange={(rating) => handleRatingChange('rating', rating)}
+            />
+
+            <InputTextArea
+              id="visitor-review"
+              placeholder="Bagikan pengalaman Anda mengunjungi museum ini..."
+              rows={5}
+              value={ratingForm.review}
+              onChange={(e) => handleRatingChange('review', e.target.value)}
+              required
+            />
+
+            <div className="flex justify-center mt-8">
+              <button
+                type="submit"
+                className="text-[#847253] font-bold bg-[#FFFBD9] py-3 px-8 rounded-lg transition-all duration-300 ease-in-out cursor-pointer border-none text-base shadow-[0_4px_8px_rgba(0,0,0,0.2)] hover:bg-[#f0e8d9] hover:-translate-y-0.5 hover:shadow-[0_6px_12px_rgba(0,0,0,0.3)] active:translate-y-0 active:shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
+              >
+                Kirim Review
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
