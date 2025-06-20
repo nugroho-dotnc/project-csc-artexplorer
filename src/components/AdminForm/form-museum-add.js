@@ -9,17 +9,13 @@ export default function MuseumAddForm({ onSubmit, imageChangeHandle, imagePrevie
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
-    const [price, setPrice] = useState(0);
-    const [isRecommended, setIsRecommended] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit({ name, description, location, price, isRecommended });
+        onSubmit({ name, description, location});
         setName("");
         setDescription("");
         setLocation("");
-        setPrice(0);
-        setIsRecommended(false);
     }
 
   return (
@@ -81,29 +77,6 @@ export default function MuseumAddForm({ onSubmit, imageChangeHandle, imagePrevie
         onChange={(event) => setDescription(event.target.value)}
         required
       />
-
-      <div className="flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between">
-        <div className="flex-1">
-          <TextField
-            id="ticket-price"
-            label="Ticket Price"
-            type="number"
-            step="0.01"
-            min="0"
-            value={price}
-            required={false}
-            onChange={(event) => setPrice(event.target.value)}
-          />
-        </div>
-        <div className="flex-1">
-          <ButtonToggle
-            id="is-recommended"
-            label="Is Recommended?"
-            checked={isRecommended}
-            onChange={(event) => setIsRecommended(event.target.checked)}
-          />
-        </div>
-      </div>
 
       <div className="flex justify-center">
         <Button label="Tambah Data" variant="add" />

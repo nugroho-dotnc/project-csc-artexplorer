@@ -33,8 +33,6 @@ export default function GalleryArt() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-  const [price, setPrice] = useState(0);
-  const [isRecommended, setIsRecommended] = useState(false);
   const [data, setData] = useState({}); 
   const [artGallery, setArtGallery] = useState([]); 
 
@@ -65,8 +63,6 @@ export default function GalleryArt() {
       setName(data.name || ""); 
       setDescription(data.description || "");
       setLocation(data.location || "");
-      setPrice(data.ticketPrice); 
-      setIsRecommended(data.isRecomended || false); 
     }
   }, [data]);
 
@@ -104,7 +100,7 @@ export default function GalleryArt() {
     };
 
     const handleMuseumUpdate = async (data) => {
-        const { name, description, location, price, isRecommended } = data;
+        const { name, description, location} = data;
         console.log("Form data received:", data);
         
         let finalImageUrl = data.imageUrl; 
@@ -129,8 +125,6 @@ export default function GalleryArt() {
             description,
             location,
             imageUrl: finalImageUrl, 
-            isRecomended : isRecommended,
-            ticketPrice: price 
         };
         console.log("data:" , museum)
         try {
@@ -150,7 +144,7 @@ export default function GalleryArt() {
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      const museum = { name, description, location, price, isRecommended, imageUrl: data.imageUrl }
+      const museum = { name, description, location, imageUrl: data.imageUrl }
       console.log("Form submitted with:", museum);
       handleMuseumUpdate(museum)
       // setName("");
@@ -178,9 +172,17 @@ export default function GalleryArt() {
     }
   }
 
-  const handleDeleteArtPiece = (artId) => {
-      console.log(`Deleting art piece with ID: ${artId}`);
-      toast.error(`Delete functionality for art piece ${artId} not yet implemented.`);
+  const handleDeleteArtPiece = async (artId) => {
+      try{
+        const res = await axios.delete(`/api/art-gallery/${artId}`)
+        if(res.data.success){
+          toast.success(res.data.message)
+        }
+      }catch(e){
+        console.log(e.message);
+        toast.error(e.response?.data?.error??"gagal menghapus koleksi!");
+      }
+      router.reload();
   }
 
 
@@ -232,28 +234,6 @@ export default function GalleryArt() {
                     onChange={(e) => setDescription(e.target.value)}
                     required={false}
                   />
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <div className="flex-1">
-                      <TextField
-                        id="ticket-price"
-                        label="Ticket Price"
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        value={price}
-                        required={false}
-                        onChange={(e) => setPrice(e.target.value)}
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <ButtonToggle
-                        id="is-recommended"
-                        label="Is Recommended?"
-                        checked={isRecommended}
-                        onChange={(e) => setIsRecommended(e.target.checked)}
-                      />
-                    </div>
-                  </div>
 
                   <div className="flex justify-center mt-8">
                     <div className="flex gap-4">
@@ -273,7 +253,7 @@ export default function GalleryArt() {
               <div className="mt-12 px-2 md:px-4">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                   <h2 className="text-2xl font-bold">Museum Collections</h2>
-                  <Button label="Tambah Data" variant="add" onClick={() => toast.info("Add new art piece functionality not yet implemented.")} />
+                  <Button label="Tambah Data" variant="add" onClick={() => router.push(`/admin/form/gallery-add/${id}`)} />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 bg-slate-100 p-4 rounded-md shadow-md">
                   {artGallery && artGallery.length > 0 ? (
@@ -283,7 +263,11 @@ export default function GalleryArt() {
                         imgUrl={value.imageUrl}
                         title={value.title}
                         description={value.description}
-                        onDelete={() => handleDeleteArtPiece(value.id)}
+                        onDelete={() =>showDeleteAlert({
+                          title: "Delete Collection",
+                          description: "Do you want to delete this collection?",
+                          onConfirm: () =>  handleDeleteArtPiece(value.id)
+                        })}
                       />
                     ))
                   ) : (

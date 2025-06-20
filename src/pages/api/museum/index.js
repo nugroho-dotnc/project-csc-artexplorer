@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
   else if (req.method === 'POST') {
     try {
-      const { name, description, location, imageUrl, isRecomended,  ticketPrice} = req.body;
+      const { name, description, location, imageUrl} = req.body;
       if(name == null || description == null || location == null || imageUrl == null){
         return res.status(400).json(
           {
@@ -41,8 +41,6 @@ export default async function handler(req, res) {
           description,
           location,
           imageUrl,
-          isRecomended,
-          ticketPrice,
         },
       });
 
