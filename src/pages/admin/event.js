@@ -1,7 +1,41 @@
 import Button from "@/components/AdminForm/button";
 import AdminLayout from "@/components/admin-layout";
+import { showDeleteAlert } from "@/lib/customAlert";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Event() {
+    const router = useRouter();
+    const [eventData, setEventData] = useState([])
+    const dateFormatter = new Intl.DateTimeFormat('id-ID', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+    const fetchEventData = async () => {
+      try{
+        const res = await axios.get('/api/event')
+        if(res.data.success){
+          setEventData(res.data.data)
+        }
+      }catch(e){
+        toast.error(e.response?.data?.message??"gagal memuat event")
+      }
+    }
+    useEffect(()=>{
+      fetchEventData()
+    }, [])
+    const deleteEvent = async (id) => {
+      try{
+        await axios.delete(`/api/event/${id}`)
+        toast.success('event berhasil dihapus')
+        router.reload()
+      }catch(e){
+        toast.error(e.response?.data?.error??"Gagal menghapus event!")
+      } 
+    }
     return (
     <AdminLayout>
       <div className="p-4 sm:p-6 md:p-12 bg-zinc-100 w-full min-h-dvh">
@@ -39,30 +73,48 @@ export default function Event() {
               </thead>
 
               <tbody>
-                <tr className="odd:bg-white even:bg-slate-50 border-b border-gray-300 *:px-4 *:py-4 *:align-top *:text-left *:break-words">
-                  <td className="font-medium">Spirit Blossom Exhibitions</td>
-                  <td>Discover Xin's Journey from Nexus to Ionia alongside the new Spirit Blossom skin lines </td>
-                  <td>
-                    2025-07-01
-                  </td>
-                  <td>
-                    2025-07-31
-                  </td>
-                  <td>
-                    <a href="/admin/form/event-edit">
-                        <Button 
-                            label="Edit"
-                            variant="edit"
-                        />
-                    </a>
-                  </td>
-                  <td>
-                    <Button 
-                        label="Delete"
-                        variant="delete"
-                    />
-                  </td>
-                </tr>
+                {
+                  eventData?
+                  eventData.map((item, index) => {
+                    return <tr className="odd:bg-white even:bg-slate-50 border-b border-gray-300 *:px-4 *:py-4 *:align-top *:text-left *:break-words">
+                              <td className="font-medium">{item.title}</td>
+                              <td>{item.description}</td>
+                              <td>
+                                {item.startDate ? dateFormatter.format(new Date(item.startDate)) : 'N/A'}
+                              </td>
+                              <td>
+                                {item.startDate ? dateFormatter.format(new Date(item.startDate)) : 'N/A'}
+                              </td>
+                              <td>
+                                <Button 
+                                        label="Edit"
+                                        variant="edit"
+                                        onClick={()=> router.push(`/admin/form/event-edit/${item.id}`)}
+                                    />
+                              </td>
+                              <td>
+                                <Button 
+                                    label="Delete"
+                                    variant="delete"
+                                    onClick={
+                                      ()=>showDeleteAlert(
+                                        {
+                                          title: "Delete Event",
+                                          description: "Are you sure you want to delete this event?",
+                                          onConfirm: ()=> deleteEvent(item.id),
+                                        }
+                                      )
+                                    }
+                                />
+                              </td>
+                            </tr>
+                  }):
+                  <tr>
+                    <td className="text-center">
+                        Tidak ada event
+                    </td>
+                  </tr>
+                }
               </tbody>
             </table>
           </div>

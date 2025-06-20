@@ -8,6 +8,11 @@ import toast from "react-hot-toast";
 export default function Feedback() {
   const [data, setData] = useState([]);
   const router = useRouter();
+  const dateFormatter = new Intl.DateTimeFormat('id-ID', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
   const fetchFeedback = async () => {
   try{
     const res = await axios.get(`/api/feedback`)
@@ -80,7 +85,7 @@ export default function Feedback() {
                       </td>
                       <td>
                         {
-                          item.date
+                          item.date ? dateFormatter.format(new Date(item.date)) : 'N/A'
                         }
                       </td>
                       <td>

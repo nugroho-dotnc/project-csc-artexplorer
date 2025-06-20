@@ -1,18 +1,71 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import TextField from "@/components/AdminForm/text-field";
 import Button from "@/components/AdminForm/button";
 import FileField from "./file-field";
+import ImageField from "./image-field";
+import SelectField from "../select-field";
+import axios from "axios";
+import toast from "react-hot-toast";
 
-export default function EventEditForm({ onSubmit }) {
+export default function EventEditForm({ onSubmit, event }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState("");
+  const [selectedMuseumId, setSelectedMuseumId] = useState("");
+  const [museumOptions, setMuseumOptions] = useState([]);
+
+  const fetchMuseums = async () => {
+    try {
+      const res = await axios.get(`/api/museum`);
+      const options = res.data.data.map((museum) => ({
+        label: museum.name,
+        value: museum.idMuseum.toString(),
+      }));
+      setMuseumOptions(options);
+    } catch (e) {
+      toast.error(e.response?.data?.message || "Gagal mendapatkan data museum!");
+    }
+  };
+
+  
+
+  useEffect(() => {
+    fetchMuseums();
+    setTitle(event.title);
+    setDescription(event.description);
+    setStartDate(event.startDate ? new Date(event.startDate).toISOString().split('T')[0] : "");
+    setEndDate(event.endDate ? new Date(event.endDate).toISOString().split('T')[0] : "");
+    setImagePreview(event.imageUrl);
+    setSelectedMuseumId(event.museumId?.toString() || "");
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ title, description, startDate, endDate });
+
+    if (!title || !description || !startDate || !endDate || !selectedMuseumId) {
+      toast.error("Mohon lengkapi semua kolom yang wajib diisi.");
+      return;
+    }
+
+    onSubmit({
+      title,
+      description,
+      startDate,
+      endDate,
+      image,
+      museumId: selectedMuseumId,
+    });
+  };
+
+  const handleImagePick = (pickedImageFile) => {
+    setImage(pickedImageFile)
+  };
+
+  const handleMuseumChange = (e) => {
+    setSelectedMuseumId(e.target.value);
   };
 
   return (
@@ -44,30 +97,37 @@ export default function EventEditForm({ onSubmit }) {
         <div>
           <h2 className="text-2xl font-bold text-center">Edit Event</h2>
         </div>
-        <div>{/* Spacer */}</div>
+        <div></div>
       </div>
 
       <hr className="h-px w-4/5 my-4 mx-auto" />
+      
+      <div className="flex w-full justify-center">
+        <ImageField 
+          id="event-image" 
+          onChange={handleImagePick} 
+          previewImage={imagePreview}
+        />
+      </div>
 
       <TextField
         id="event-title"
-        label="Event Title"
-        value={"Spirit Blossom"}
+        label="Judul Event"
+        value={title}
         onChange={(event) => setTitle(event.target.value)}
         required
       />
 
       <TextField
         id="event-description"
-        label="Description"
+        label="Deskripsi"
         value={description}
         onChange={(event) => setDescription(event.target.value)}
-        required={false}
       />
 
       <TextField
         id="start-date"
-        label="Start Date"
+        label="Tanggal Mulai"
         type="date"
         value={startDate}
         onChange={(event) => setStartDate(event.target.value)}
@@ -76,11 +136,20 @@ export default function EventEditForm({ onSubmit }) {
 
       <TextField
         id="end-date"
-        label="End Date"
+        label="Tanggal Selesai"
         type="date"
         value={endDate}
         onChange={(event) => setEndDate(event.target.value)}
         required
+      />
+
+      <SelectField
+        id={"museum-select"}
+        label={"Pilih Museum"}
+        options={museumOptions}
+        value={selectedMuseumId}
+        onChange={(e) => handleMuseumChange(e)}
+        required={true}
       />
 
       <div className="flex justify-center">

@@ -53,6 +53,7 @@ model events {
   description String
   startDate DateTime
   endDate DateTime
+  imageUrl String
   museumId Int @unique
   museum Museum @relation(fields: [museumId], references: [idMuseum])
 }

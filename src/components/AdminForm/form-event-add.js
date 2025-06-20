@@ -1,23 +1,69 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import TextField from "@/components/AdminForm/text-field";
 import Button from "@/components/AdminForm/button";
 import FileField from "./file-field";
+import ImageField from "./image-field";
+import SelectField from "../select-field";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function EventAddForm({ onSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [image, setImage] = useState(null);
+  const [selectedMuseumId, setSelectedMuseumId] = useState("");
+  const [museumOptions, setMuseumOptions] = useState([]);
+
+  const fetchMuseums = async () => {
+    try {
+      const res = await axios.get(`/api/museum`);
+      const options = await res.data.data.map((museum) => ({
+        label: museum.name,
+        value: museum.idMuseum.toString(),
+      }));
+      setMuseumOptions(options);
+    } catch (e) {
+      toast.error(e.response?.data?.message || "Gagal mendapatkan data museum!");
+    }
+  };
+
+  useEffect(() => {
+    fetchMuseums();
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ title, description, startDate, endDate });
+
+    if (!title || !description || !startDate || !endDate || !image || !selectedMuseumId) {
+      toast.error("Mohon lengkapi semua kolom yang wajib diisi.");
+      return;
+    }
+
+    onSubmit({
+      title,
+      description,
+      startDate,
+      endDate,
+      image,
+      museumId: selectedMuseumId,
+    });
 
     setTitle("");
     setDescription("");
     setStartDate("");
     setEndDate("");
+    setSelectedMuseumId("");
+  };
+
+  const handleImagePick = (pickedImageFile) => {
+    setImage(pickedImageFile)
+  };
+
+  const handleMuseumChange = (e) => {
+    setSelectedMuseumId(e.target.value);
   };
 
   return (
@@ -49,11 +95,14 @@ export default function EventAddForm({ onSubmit }) {
         <div>
           <h2 className="text-2xl font-bold text-center">Tambah Event</h2>
         </div>
-        <div>{/* Spacer */}</div>
+        <div></div>
       </div>
 
       <hr className="h-px w-4/5 my-4 mx-auto" />
-
+      <div className="flex w-full justify-center">
+        <ImageField id="event-image" onChange={(e)=>handleImagePick(e)} />
+      </div>
+      
       <TextField
         id="event-title"
         label="Event Title"
@@ -67,7 +116,6 @@ export default function EventAddForm({ onSubmit }) {
         label="Description"
         value={description}
         onChange={(event) => setDescription(event.target.value)}
-        required={false}
       />
 
       <TextField
@@ -85,6 +133,15 @@ export default function EventAddForm({ onSubmit }) {
         type="date"
         value={endDate}
         onChange={(event) => setEndDate(event.target.value)}
+        required
+      />
+
+      <SelectField
+        id={"museum-select"}
+        label={"Pilih Museum"}
+        options={museumOptions}
+        value={selectedMuseumId}
+        onChange={handleMuseumChange}
         required
       />
 
