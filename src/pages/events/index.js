@@ -1,74 +1,33 @@
+// src/pages/events/index.js
+
 import React from "react";
+import { useRouter } from "next/router";
 import CustomerLayout from "@/components/customer-layout";
 import EventCard from "@/components/event-card";
+// Impor modul Node.js untuk membaca file
+import path from 'path';
+import fs from 'fs/promises';
 
-const Events = () => {
-    // Sample event data - tidak perlu diubah
-    const events = [
-        {
-            id: 1,
-            title: "Hiroshige",
-            subtitle: "artist of the open road",
-            eventType: "Exhibitions",
-            dateRange: "19 - 25 June",
-            year: "2025",
-            imageUrl: "/uploads/events/hiroshige.webp"
-        },
-        {
-            id: 2,
-            title: "Van Gogh",
-            subtitle: "starry night collection",
-            eventType: "Exhibitions",
-            dateRange: "26 June - 2 July",
-            year: "2025",
-            imageUrl: "/uploads/events/van-gogh.webp"
-        },
-        {
-            id: 3,
-            title: "Monet",
-            subtitle: "impressionist masterworks",
-            eventType: "Special Event",
-            dateRange: "3 - 10 July",
-            year: "2025",
-            imageUrl: "/uploads/events/monet.webp"
-        },
-        {
-            id: 4,
-            title: "Picasso",
-            subtitle: "cubism revolution",
-            eventType: "Exhibitions",
-            dateRange: "11 - 18 July",
-            year: "2025",
-            imageUrl: "/uploads/museum/event-dummy.jpg"
-        }
-    ];
+// Komponen menerima 'events' sebagai props dari getStaticProps
+const Events = ({ events }) => {
+    const router = useRouter();
 
     const handleDetailsClick = (eventId) => {
-        console.log(`Details clicked for event ${eventId}`);
-        // Logika navigasi Anda di sini
+      router.push(`/event-detail/${eventId}`);
     };
-
-    // --- LOGIKA "ROWS" YANG LAMA DIHAPUS ---
-    // Logika untuk membagi events menjadi "rows" tidak lagi diperlukan.
-    // const rows = [];
-    // for (let i = 0; i < events.length; i += 2) {
-    //     rows.push(events.slice(i, i + 2));
-    // }
 
     return (
         <CustomerLayout>
             <div className="w-screen min-h-screen flex flex-col items-center bg-white px-4">
-                {/* Menggunakan w-[90%] atau max-w-6xl lebih baik dari w-[85%] untuk konsistensi */}
                 <div className="w-full max-w-6xl">
-                    <div className="text-secondary text-3xl font-bold mt-28 border-secondary border-b-1">
+                    <div className="text-secondary text-3xl font-bold mt-28 border-secondary border-b">
                         <h1>Events and Exhibitions</h1>
                     </div>
                     <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Langsung map dari array 'events', tidak perlu nested map */}
                         {events.map((event) => (
-                            // Setiap item grid akan memiliki tinggi 400px
                             <div key={event.id} className="h-[400px]">
                                 <EventCard
+                                    id={event.id}
                                     title={event.title}
                                     subtitle={event.subtitle}
                                     eventType={event.eventType}
@@ -80,8 +39,6 @@ const Events = () => {
                             </div>
                         ))}
                     </div>
-
-                    {/* Memberi jarak di bawah, pastikan tidak terpotong */}
                     <div className="pt-24"></div>
                 </div>
             </div>
@@ -90,3 +47,18 @@ const Events = () => {
 };
 
 export default Events;
+
+// getStaticProps mengambil data saat proses build
+export async function getStaticProps() {
+  // Logika untuk membaca file JSON diletakkan langsung di sini
+  const filePath = path.join(process.cwd(), 'public', 'data', 'event.json');
+  const jsonData = await fs.readFile(filePath);
+  const data = JSON.parse(jsonData);
+
+  // Kirim data sebagai props ke komponen 'Events'
+  return {
+    props: {
+      events: data,
+    },
+  };
+}

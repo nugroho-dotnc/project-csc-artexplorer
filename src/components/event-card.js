@@ -1,13 +1,16 @@
+// src/components/event-card.js (TIDAK ADA PERUBAHAN)
+
 import React from "react";
 
-const EventCard = ({ 
-  title, 
-  subtitle, 
-  eventType, 
-  dateRange, 
-  year, 
-  imageUrl = "/uploads/museum/event-dummy.jpg",
-  onDetailsClick 
+const EventCard = ({
+  id,
+  title,
+  subtitle,
+  eventType,
+  dateRange,
+  year,
+  imageUrl,
+  onDetailsClick
 }) => {
   return (
     <div className="w-full h-full hover:bg-primary bg-secondary hover:text-secondary hover:scale-105 transition-all text-primary flex group">
@@ -22,7 +25,7 @@ const EventCard = ({
             <h2>{dateRange}</h2>
             <h2>{year}</h2>
           </div>
-          <button 
+          <button
             className="w-[65px] h-[65px] bg-primary group-hover:bg-secondary group-hover:text-primary rounded-full flex justify-center items-center text-secondary cursor-pointer text-sm font-medium hover:bg-primary hover:text-secondary hover:border-1 transition-all"
             onClick={onDetailsClick}
           >
@@ -30,7 +33,7 @@ const EventCard = ({
           </button>
         </div>
       </div>
-      <div 
+      <div
         className="w-1/2 h-full bg-center bg-cover bg-no-repeat"
         style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
