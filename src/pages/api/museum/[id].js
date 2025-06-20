@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         case 'GET':
             try {
                 const museum = await prisma.museum.findUnique({
-                    where: { idMuseum: idInt }, // Assuming 'idMuseum' is the correct field in your Prisma schema
+                    where: { idMuseum: idInt },
                     include: { artGallery: true },
                 });
 
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
 
         case 'PUT':
             try {
-                const { name, description, location, imageUrl, isRecomended, ticketPrice } = req.body; 
+                const { name, description, location, imageUrl } = req.body; 
                 if (!name || !description || !location || !imageUrl ) {
                     return res.status(400).json({
                         success: false,
@@ -82,8 +82,6 @@ export default async function handler(req, res) {
                         description,
                         location,
                         imageUrl, 
-                        isRecomended, 
-                        ticketPrice,
                     },
                 });
 

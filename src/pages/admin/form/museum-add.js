@@ -42,11 +42,10 @@ export default function MuseumAdd() {
     };
 
     const handleMuseumAdd = async (data) => {
-        const { name, description, location, price, isRecommended } = data;
+        const { name, description, location} = data;
         console.log("Form data received:", data);
         console.log("Selected image:", selectedImage);
 
-        
         if (!selectedImage) {
             toast.error("Please select an image for the museum.");
             return;
@@ -65,8 +64,6 @@ export default function MuseumAdd() {
             description,
             location,
             imageUrl: imagePath, 
-            isRecomended : isRecommended,
-            ticketPrice: price 
         };
 
         try {

@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `museum` MODIFY `rate` DOUBLE NULL DEFAULT 0,
+    MODIFY `totalVote` INTEGER NULL DEFAULT 0;

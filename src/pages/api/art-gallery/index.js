@@ -32,8 +32,8 @@ export default async function handler(req, res) {
         data: {
           title: title,
           description: description,
-          image_url: imageUrl,
-          museumId: museumId
+          imageUrl: imageUrl,
+          museumId: parseInt(museumId)
         },
       });
 

@@ -13,10 +13,10 @@ model Museum {
   description String
   location    String
   imageUrl       String
-  ticketPrice Float? 
-  isRecomended Boolean @default(false)
+  rate Float? @default(0)
+  totalVote Int? @default(0)
   artGallery  ArtGallery[] 
-  orderTicket OrderTicket[]
+  museumRateList MuseumRateList[]
 
   events events[]
 }
@@ -39,15 +39,12 @@ model Feedback {
   date        DateTime @default(now())
 }
 
-model OrderTicket {
-  idOrder    Int     @id @default(autoincrement())
-  OidMuseum  Int     @unique
-  qty      Int
-  total Float
-  name        String
-  email       String
-  accepted    Boolean @default(false)
-  museum      Museum  @relation(fields: [OidMuseum], references: [idMuseum])
+model MuseumRateList {
+  id    Int     @id @default(autoincrement())
+  idMuseum  Int     @unique
+  email String
+  rate Float 
+  museum      Museum  @relation(fields: [idMuseum], references: [idMuseum])
 }
 
 model events {
