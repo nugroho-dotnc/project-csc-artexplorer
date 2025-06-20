@@ -14,8 +14,8 @@ export default async function handler(req, res) {
         where: { id: parseInt(id) }, 
       });
        if (deleted.imageUrl) {
-                const absolutePath = path.resolve('./public/', deleted.imageUrl);
-                await fs.rm(absolutePath, { force: true });
+                const absolutePath = path.join(process.cwd(), 'public', deleted.imageUrl);
+                await fs.unlink(absolutePath, { force: true });
           }         
       return res.status(200).json({
         success: true,

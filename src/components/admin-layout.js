@@ -32,7 +32,7 @@ export default function AdminLayout({ children }) {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100 ">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-100 ">
       <AdminMobileNav onMenuToggle={toggleSidebar} />
 
       <div className="hidden md:flex">
@@ -57,7 +57,7 @@ export default function AdminLayout({ children }) {
       )}
 
       <div className={`flex-1 p-4 overflow-auto
-        transition-all duration-300 ease-in-out`}>
+        transition-all duration-300 ease-in-out h-screen overflow-y-scroll`}>
         {children}
       </div>
     </div>

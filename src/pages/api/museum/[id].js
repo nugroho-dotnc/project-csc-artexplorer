@@ -6,107 +6,148 @@ import path from 'path';
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const { id } = req.query;
-  const idInt = parseInt(id);
-  if (isNaN(idInt)) {
-    return res.status(400).json({ success: false, message: "Invalid ID" });
-  }
+    const { id } = req.query;
+    const idInt = parseInt(id);
 
-  switch (req.method) {
+    if (isNaN(idInt)) {
+        return res.status(400).json({ success: false, message: "Invalid ID provided." });
+    }
 
-    case 'GET':
-      try {
-        const museum = await prisma.museum.findUnique({
-          where: { id_museum: idInt },
-          include: { artGallery: true },
-        });
+    switch (req.method) {
+        case 'GET':
+            try {
+                const museum = await prisma.museum.findUnique({
+                    where: { idMuseum: idInt }, // Assuming 'idMuseum' is the correct field in your Prisma schema
+                    include: { artGallery: true },
+                });
 
-        if (!museum) {
-          return res.status(404).json({ success: false, message: 'Museum not found' });
-        }
+                if (!museum) {
+                    return res.status(404).json({ success: false, message: 'Museum not found.' });
+                }
 
-        return res.status(200).json({
-          success: true,
-          message: 'Museum successfully loaded',
-          data: museum,
-        });
-      } catch (e) {
-        return res.status(500).json({
-          success: false,
-          message: 'Failed to get museum details',
-          error: e.message,
-        });
-      }
+                return res.status(200).json({
+                    success: true,
+                    message: 'Museum successfully loaded.',
+                    data: museum,
+                    artGallery: museum.artGallery || [] 
+                });
+            } catch (e) {
+                console.error("GET Museum API Error:", e);
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to get museum details.',
+                    error: e.message,
+                });
+            }
 
-    case 'PUT':
-      try {
-        const body = req.body || (await parseBody(req));
-        const { name, description, location, imageUrl, isReccomended,  ticketPrice} = body;
-        const findMuseum = await prisma.museum.findFirst({where: {idMuseum: idInt}})
-        
-         if (imageUrl) {
-          const absolutePath = path.resolve('./public/', findMuseum.imageUrl);
-          await fs.rm(absolutePath, { force: true });
-        }
+        case 'PUT':
+            try {
+                const { name, description, location, imageUrl, isRecomended, ticketPrice } = req.body; 
+                if (!name || !description || !location || !imageUrl ) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'All fields (name, description, location, imageUrl, isRecomended, ticketPrice) are required.',
+                    });
+                }
 
-        const updated = await prisma.museum.update({
-          where: { id_museum: idInt },
-          data: { name, description, location, image, isReccomended, ticketPrice },
-        });
-        
-       
-        return res.status(200).json({ success: true, data: updated });
-      } catch (e) {
-        return res.status(500).json({
-          success: false,
-          message: 'Failed to update museum',
-          error: e.message,
-        });
-      }
+                const existingMuseum = await prisma.museum.findUnique({
+                    where: { idMuseum: idInt } 
+                });
 
-    case 'DELETE':
-      try {
-        const museum = await prisma.museum.findUnique({
-          where: { id_museum: idInt },
-        });
+                if (!existingMuseum) {
+                    return res.status(404).json({ success: false, message: 'Museum not found for update.' });
+                }
 
-        if (!museum) {
-          return res.status(404).json({ success: false, message: 'Museum not found' });
-        }
+                if (imageUrl && existingMuseum.imageUrl && imageUrl !== existingMuseum.imageUrl) {
+                    try {
+                        const oldAbsolutePath = path.join(process.cwd(), 'public', existingMuseum.imageUrl);
+                        console.log(`Mencoba menghapus gambar lama: ${oldAbsolutePath}`); 
+                        await fs.unlink(oldAbsolutePath, { force: true });
+                        console.log(`Berhasil menghapus gambar lama: ${oldAbsolutePath}`);
+                    } catch (fileDeleteError) {
+                        console.error(`[PUT] Gagal menghapus gambar lama ${existingMuseum.imageUrl}:`, fileDeleteError);
+                        // return res.status(500).json({
+                        //     success: false,
+                        //     message: `Gagal menghapus gambar lama museum. Error: ${fileDeleteError.message}`,
+                        //     error: fileDeleteError.message,
+                        //     filePathAttempted: existingMuseum.imageUrl
+                        // });
+                    }
+                }
 
-        // Hapus file gambar jika ada
-        if (museum.imageUrl) {
-          const absolutePath = path.resolve('./public/', museum.imageUrl);
-          await fs.rm(absolutePath, { force: true });
-        }
+                const updatedMuseum = await prisma.museum.update({
+                    where: { idMuseum: idInt }, 
+                    data: {
+                        name,
+                        description,
+                        location,
+                        imageUrl, 
+                        isRecomended, 
+                        ticketPrice,
+                    },
+                });
 
-        await prisma.museum.delete({
-          where: { id_museum: idInt },
-        });
+                return res.status(200).json({
+                    success: true,
+                    message: 'Museum updated successfully.',
+                    data: updatedMuseum,
+                });
+            } catch (e) {
+                console.error("PUT Museum API Error:", e);
+                if (e.code === 'P2002') {
+                    return res.status(409).json({
+                        success: false,
+                        message: 'A museum with the same unique identifier already exists.',
+                        error: e.message,
+                    });
+                }
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to update museum.',
+                    error: e.message,
+                });
+            }
 
-        return res.status(200).json({ success: true, message: 'Deleted successfully' });
-      } catch (e) {
-        return res.status(500).json({
-          success: false,
-          message: 'Failed to delete museum',
-          error: e.message,
-        });
-      }
+        case 'DELETE':
+            try {
+                const museum = await prisma.museum.findUnique({
+                    where: { idMuseum: idInt }, 
+                });
 
-    default:
-      res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
-      return res.status(405).json({
-        success: false,
-        message: `Method ${req.method} Not Allowed`,
-      });
-  }
-}
+                if (!museum) {
+                    return res.status(404).json({ success: false, message: 'Museum not found.' });
+                }
 
-async function parseBody(req) {
-  const buffers = [];
-  for await (const chunk of req) {
-    buffers.push(chunk);
-  }
-  const data = Buffer.concat(buffers).toString();
-  return JSON.parse(data);
+                if (museum.imageUrl) {
+                    try {
+                        const absolutePath = path.join(process.cwd(), 'public', museum.imageUrl);
+                        await fs.unlink(absolutePath, { force: true });
+                        console.log(`Successfully deleted image file: ${absolutePath}`);
+                    } catch (fileDeleteError) {
+                        console.error(`Failed to delete image file ${museum.imageUrl}:`, fileDeleteError);
+                       
+                    }
+                }
+
+                await prisma.museum.delete({
+                    where: { idMuseum: idInt }, 
+                });
+
+                return res.status(200).json({ success: true, message: 'Museum deleted successfully.' });
+            } catch (e) {
+                console.error("DELETE Museum API Error:", e);
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to delete museum.',
+                    error: e.message,
+                });
+            }
+
+        default:
+            res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
+            return res.status(405).json({
+                success: false,
+                message: `Method ${req.method} Not Allowed`,
+            });
+    }
 }

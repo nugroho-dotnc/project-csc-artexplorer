@@ -1,6 +1,7 @@
 import AdminLayout from "@/components/admin-layout";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 
 const MuseumListCard = ({imageUrl, title, description, location, onAction}) => {
@@ -75,7 +76,6 @@ export default function MuseumList() {
       const response = await axios.get('/api/museum')
       if(response.data.success){
         setData(response.data.data)
-        toast.success(response.data.message)
       }
     }catch(e){
       toast.error(e.response.data.message)
@@ -85,7 +85,7 @@ export default function MuseumList() {
   useEffect(() => {
     fetchData()
   }, [])
-  
+  const router = useRouter();
   return (
     <AdminLayout>
     <div
@@ -136,8 +136,7 @@ export default function MuseumList() {
           </div>
           {
             data.map((dat)=>{
-              return<MuseumListCard key={dat.idMuseum} title={dat.name} description={dat.description} location={dat.location} imageUrl={dat.imageUrl}/>
-
+              return<MuseumListCard key={dat.idMuseum} title={dat.name} description={dat.description} location={dat.location} imageUrl={dat.imageUrl} onAction={()=>router.push(`/admin/gallery-art/${dat.idMuseum}`)}/>
             })
           }          
         </div>

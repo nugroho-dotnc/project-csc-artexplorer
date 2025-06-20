@@ -27,7 +27,7 @@ export default function AdminSidebar({ onLinkClick }) {
 
   return (
    
-    <div className="bg-black text-primary w-64 min-h-screen p-4 flex flex-col justify-between">
+    <div className="bg-black text-primary w-64 h-screen p-4 flex flex-col justify-between">
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4 text-center">ArtExplorer</h2>
         <hr className="h-px w-4/5 my-4 mx-auto bg-gray-700 border-0" />

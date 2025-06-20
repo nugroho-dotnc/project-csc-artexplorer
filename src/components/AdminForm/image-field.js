@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ImageField({ id, label = "Upload Gambar", onChange }) {
+export default function ImageField({ id, label = "Upload Gambar", onChange, previewImage }) {
   const [fileName, setFileName] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
 
@@ -31,9 +31,9 @@ export default function ImageField({ id, label = "Upload Gambar", onChange }) {
           className="hidden"
         />
         <label htmlFor={id} className="cursor-pointer text-center">
-          {previewUrl ? (
+          {previewUrl || previewImage ? (
             <img
-              src={previewUrl}
+              src={previewUrl??previewImage}
               alt="Preview"
               className="h-40 object-contain mb-2"
             />

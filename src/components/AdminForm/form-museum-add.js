@@ -56,7 +56,7 @@ export default function MuseumAddForm({ onSubmit, imageChangeHandle, imagePrevie
 
       <hr className="h-px w-4/5 my-8 mx-auto" />
 
-      <FileField id="museum-image" label="Museum Image" />
+      <FileField id="museum-image" label="Museum Image" onChange={(event)=> imageChangeHandle(event)}/>
 
       <TextField
         id="museum-name"
