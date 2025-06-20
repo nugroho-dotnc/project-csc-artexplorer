@@ -78,7 +78,7 @@ export default function Login() {
     <>
       <div
         className="w-screen h-screen md:hidden relative bg-cover bg-center"
-        style={{ backgroundImage: `url("/uploads/museum/login.jpg")` }}
+        style={{ backgroundImage: `url("/uploads/images/login.jpg")` }}
       >
         <div className="absolute bottom-0 left-0 right-0 h-[75%] bg-white rounded-t-[24px] p-8 flex flex-col">
           <LoginForm isMobile={true} />

@@ -99,13 +99,6 @@ function MuseumDetail() {
             })
           }
         </div>
-
-        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 px-5 md:px-6 w-full max-w-[1200px] mx-auto mb-6 md:mb-0">
-          {listKoleksi.map((data, index) => {
-            return <GalleryCard data={data} key={index}/>
-          })}
-          { <GalleryCard/> }
-        </div> */}
       </div>
     </div>
     </CustomerLayout>
