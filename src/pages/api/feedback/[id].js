@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   if (req.method === 'DELETE') {
     try {
       await prisma.feedback.delete({
-        where: { id_feedback: parseInt(id) }, 
+        where: { idFeedback: parseInt(id) }, 
       });
 
       return res.status(200).json({
