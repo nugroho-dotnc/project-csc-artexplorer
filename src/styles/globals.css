@@ -31,7 +31,7 @@ body{
   --color-black-90: #0000006E;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #fff;
     --foreground: #ededed;

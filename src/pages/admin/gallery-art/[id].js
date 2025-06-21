@@ -192,8 +192,8 @@ export default function GalleryArt() {
         <div className="bg-secondary p-4 md:p-6 rounded-lg shadow-md">
           <div className="rounded-lg shadow-md bg-slate-50 overflow-hidden">
             <div className="p-6 md:p-8">
-              <div className="text-center">
-                <h1 className="text-3xl font-bold text-gray-900">Gallery Art</h1>
+              <div className="text-center text-secondary">
+                <h1 className="text-3xl font-bold">Gallery Art</h1>
                 <p className="mt-4">
                   Explore the art pieces for each museum. Click on an art piece to view more
                   details.
@@ -252,10 +252,10 @@ export default function GalleryArt() {
 
               <div className="mt-12 px-2 md:px-4">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                  <h2 className="text-2xl font-bold">Museum Collections</h2>
+                  <h2 className="text-2xl font-bold text-secondary">Museum Collections</h2>
                   <Button label="Tambah Data" variant="add" onClick={() => router.push(`/admin/form/gallery-add/${id}`)} />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 bg-slate-100 p-4 rounded-md shadow-md">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 bg-slate-100 p-4 rounded-md shadow-md text-secondary">
                   {artGallery && artGallery.length > 0 ? (
                     artGallery.map((value) => (
                       <GalleryCard
