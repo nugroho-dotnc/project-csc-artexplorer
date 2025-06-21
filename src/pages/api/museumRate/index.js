@@ -3,55 +3,80 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  if (req.method === 'GET') {
+  if (req.method === 'POST') {
     try {
-      const orderTicket = await prisma.orderTicket.findMany();
-      return res.status(200).json({
-        success: true,
-        message: 'List of order ticket successfully loaded',
-        data: orderTicket,
-      });
-    } catch (e) {
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to load feedbacks',
-        error: e.message,
-      });
-    }
-  }
+      const { idMuseum, fullname, email, rate, review } = req.body;
 
-  else if (req.method === 'POST') {
-    try {
-      const { Oid_museum, jumlah, name, email } = req.body;
+      const existingMuseum = await prisma.museum.findUnique({
+        where: {
+          idMuseum: parseInt(idMuseum)
+        },
+      });
 
-      const newOrderTicket = await prisma.orderTicket.create({
-        data: {
-          Oid_museum: Oid_museum,
-          jumlah: jumlah,
-          name: name,
+      if (!existingMuseum) {
+        return res.status(404).json({
+          success: false,
+          message: 'museum not found, give a valid museum id',
+        });
+      }
+
+      const existingRateForMuseum = await prisma.museumRateList.findFirst({
+        where: {
           email: email,
+          idMuseum: parseInt(idMuseum),
+        },
+      });
+
+      if (existingRateForMuseum) {
+        return res.status(409).json({
+          success: false,
+          message: 'you\'ve already rated this museum.',
+        });
+      }
+
+      const newRate = await prisma.museumRateList.create({
+        data: {
+          idMuseum: parseInt(idMuseum),
+          email,
+          rate: parseFloat(rate),
+          fullname,
+          review,
+        },
+      });
+
+      const totalVote = existingMuseum.totalVote + 1;
+      const currentSumOfRates = existingMuseum.rate * existingMuseum.totalVote;
+      const newAverageRate = (currentSumOfRates + rate) / totalVote;
+
+      await prisma.museum.update({
+        where: {
+          idMuseum: parseInt(idMuseum)
+        },
+        data: {
+          rate: parseFloat(newAverageRate.toFixed(2)),
+          totalVote: totalVote,
         },
       });
 
       return res.status(201).json({
         success: true,
-        message: 'Order successfully created',
-        data: newOrderTicket,
+        message: 'Rate successfully created',
+        data: newRate,
       });
+
     } catch (e) {
+      console.error(e);
       return res.status(500).json({
         success: false,
-        message: 'Failed to create order',
+        message: 'failed to send rate',
         error: e.message,
       });
     }
-  }
-
-  else {
-    res.setHeader('Allow', ['GET', 'POST']);
+  } else {
+    res.setHeader('Allow', ['POST']);
     return res.status(405).json({
       success: false,
-      message: `Method ${req.method} Not Allowed`,
+      message: `Metode ${req.method} Tidak Diizinkan`,
     });
   }
 }

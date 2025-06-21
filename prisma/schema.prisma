@@ -41,10 +41,14 @@ model Feedback {
 
 model MuseumRateList {
   id    Int     @id @default(autoincrement())
-  idMuseum  Int     @unique
+  idMuseum  Int
+  fullname String?
   email String
   rate Float 
+  review  String?
   museum      Museum  @relation(fields: [idMuseum], references: [idMuseum])
+
+  @@unique([idMuseum, email])
 }
 
 model events {
@@ -54,6 +58,6 @@ model events {
   startDate DateTime
   endDate DateTime
   imageUrl String
-  museumId Int @unique
+  museumId Int
   museum Museum @relation(fields: [museumId], references: [idMuseum])
 }

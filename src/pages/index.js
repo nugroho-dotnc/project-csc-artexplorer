@@ -61,7 +61,7 @@ const ReccomendSection = () => {
     const [museumData, setMuseumData] = useState([])
     const fetchMuseum = async () =>{
         try{
-            const res = await axios.get('/api/museum')
+            const res = await axios.get('/api/museum/recomended')
             setMuseumData(res.data.data)
         }catch(e){
             toast.error(e.response?.data?.message??"load museum gagal!")
@@ -70,46 +70,50 @@ const ReccomendSection = () => {
     useEffect(() => {
       fetchMuseum()
     }, [])
-    
-    return (
-        <Scroll>
-            <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
-                <div className="w-full h-full items-center justify-center bg-[#000]/60 flex flex-col">
-                    <div className="w-[90%] flex flex-col gap-4">
-                        <div className="text-primary text-shadow-xs flex flex-col gap-2 text-shadow-primary-100">
-                            <h1 className="text-4xl font-bold">
-                                Our Recommendation & Best Place
-                            </h1>
-                            <p className="text-lg">
-                                All the best museum in jabodetabek, will gives u best experience of arts and history
-                            </p>
-                            <hr></hr>
-                        </div>
-                        <div className="w-full p-4 overflow-x-scroll">
-                            <div className="flex gap-2">
-                                {
-                                    museumData.map((item)=>{
-                                        return <MuseumCard 
-                                            image={item.imageUrl} 
-                                            title={item.name} 
-                                            desc={item.description} 
-                                            rating={item.rate}
-                                            reviewCount={item.totalVote}
-                                            />
-                                    })
-                                }
+    if(museumData.length > 0){
+        return (
+            <Scroll>
+                <section className="h-screen w-full bg-cover bg-no-repeat flex flex-col justify-between" style={{ backgroundImage: "url('/images/RECOMEND.png')" }}>
+                    <div className="w-full h-full items-center justify-center bg-[#000]/60 flex flex-col">
+                        <div className="w-[90%] flex flex-col gap-4">
+                            <div className="text-primary text-shadow-xs flex flex-col gap-2 text-shadow-primary-100">
+                                <h1 className="text-4xl font-bold">
+                                    Our Recommendation & Best Place
+                                </h1>
+                                <p className="text-lg">
+                                    All the best museum in jabodetabek, will gives u best experience of arts and history
+                                </p>
+                                <hr></hr>
+                            </div>
+                            <div className="w-full p-4 overflow-x-scroll">
+                                <div className="flex gap-2">
+                                    {
+                                        museumData.map((item)=>{
+                                            return <MuseumCard 
+                                                image={item.imageUrl} 
+                                                title={item.name} 
+                                                desc={item.description} 
+                                                rating={item.rate}
+                                                reviewCount={item.totalVote}
+                                                link={`/detail/${item.idMuseum}`}
+                                                />
+                                        })
+                                    }
+                                </div>
+                            </div>
+                            <div className="w-full h-10 flex justify-end text-primary text-lg">
+                                <a className="cursor-pointer hover:underline" href="/museums">
+                                More →
+                                </a>
                             </div>
                         </div>
-                        <div className="w-full h-10 flex justify-end text-primary text-lg">
-                            <a className="cursor-pointer hover:underline" href="/museums">
-                            More →
-                            </a>
-                        </div>
                     </div>
-                </div>
-            </section>
-        </Scroll>
+                </section>
+            </Scroll>
     );
+    } else {
+        return null
+    }
 }
 
 const ContactSection = () => {

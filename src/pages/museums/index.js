@@ -2,10 +2,50 @@ import AdminLayout from "@/components/admin-layout";
 import CustomerLayout from "@/components/customer-layout";
 import MuseumCard from "@/components/museum-card";
 import Scroll from "@/components/Scroll";
-import React from "react";
-
+import React, { useEffect } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const Museums = () => {
+    const [museums, setMuseums] = React.useState([]);
+    const [searchQuery, setSearchQuery] = React.useState("");
+    const fetchAllMuseums = async () => {
+        try {
+            const res = await axios.get('/api/museum');
+            setMuseums(res.data.data);
+        } catch (e) {
+            toast.error(e.response?.data?.message ?? "Failed to load museums!");
+        }
+    };
+
+    const handleSearch = async () => {
+        if (searchQuery.trim() !== "") { 
+            try {
+                const res = await axios.post('/api/museum/search', { searchQuery: searchQuery }); 
+                setMuseums(res.data.data);
+            } catch (e) {
+                toast.error(e.response?.data?.message ?? "Failed to search museums!");
+                console.log(e)
+            }
+        } else {
+            fetchAllMuseums();
+        }
+    };
+
+    useEffect(() => {
+        fetchAllMuseums();
+    }, []); 
+
+    useEffect(() => {
+        const debounceTimeout = setTimeout(() => {
+            handleSearch();
+        }, 300);
+        return () => clearTimeout(debounceTimeout); 
+    }, [searchQuery]); 
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
     return (
         <>
            <CustomerLayout>
@@ -21,49 +61,26 @@ const Museums = () => {
                                 <h1 className="text-2xl md:text-4xl font-bold text-center text-shadow-sm">
                                 Find Your Favorite Museum Here
                                </h1>
-                               <input type="text" placeholder="Search museums..." className="bg-primary/20 backdrop-blur-md shadow-white text-primary placeholder-primary px-6 py-3 w-80 md:w-96 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary shadow"/>
+                               <input type="text" placeholder="Search museums..." onChange={handleSearchChange} className="bg-primary/20 backdrop-blur-md shadow-white text-primary placeholder-primary px-6 py-3 w-80 md:w-96 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary shadow"/>
                             </div>
                             </Scroll>
                         </div>
                     </div>
                     <div className="w-[80%]">
                             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-center items-center">
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                expanded={true}
-                                rating={4.5}
-                                reviewCount={12}
-                                />
-
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                expanded={true}
-                                rating={3.8}
-                                reviewCount={7}
-                                />
-
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                expanded={true}
-                                rating={5.0}
-                                reviewCount={25}
-                                />
-
-                                <MuseumCard 
-                                image={"/images/museum-potrait.jpg"} 
-                                title={"Museum Bangun Lawas"} 
-                                desc={"ini adalah museum yang dibangun di blablabla"} 
-                                expanded={true}
-                                rating={2.3}
-                                reviewCount={3}
-                                />
-                        </div>
+                               {
+                                    museums.map((item)=>{
+                                        return <MuseumCard 
+                                            image={item.imageUrl} 
+                                            title={item.name} 
+                                            desc={item.description} 
+                                            rating={item.rate}
+                                            reviewCount={item.totalVote}
+                                            link={`/detail/${item.idMuseum}`}
+                                            />
+                                    })
+                                }
+                            </div>
                     </div>
                 </div>
            </div>
