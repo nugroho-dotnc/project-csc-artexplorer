@@ -71,6 +71,24 @@ const MuseumListCard = ({imageUrl, title, description, location, onAction}) => {
 
 export default function MuseumList() {
   const [data, setData] = useState([])
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = async () => {
+        if (searchQuery.trim() !== "") { 
+            try {
+                const res = await axios.post('/api/museum/search', { searchQuery: searchQuery }); 
+                setData(res.data.data);
+            } catch (e) {
+                toast.error(e.response?.data?.message ?? "Failed to search museums!");
+                console.log(e)
+            }
+        } else {
+            fetchData()
+        }
+    };
+  
+  const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+  };
   const fetchData = async () => {
     try{
       const response = await axios.get('/api/museum')
@@ -85,6 +103,12 @@ export default function MuseumList() {
   useEffect(() => {
     fetchData()
   }, [])
+  useEffect(() => {
+          const debounceTimeout = setTimeout(() => {
+              handleSearch();
+          }, 300);
+          return () => clearTimeout(debounceTimeout); 
+    }, [searchQuery]); 
   const router = useRouter();
   return (
     <AdminLayout>
@@ -117,6 +141,7 @@ export default function MuseumList() {
                   type="search"
                   placeholder="Search..."
                   className="outline-none placeholder-secondary/80"
+                  onChange={handleSearchChange}
                 />
               </div>
               <a

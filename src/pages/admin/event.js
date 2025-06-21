@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
+import { showDeleteAlert } from "@/lib/customAlert";
 
 const EventListCard = ({ imageUrl, title, description, startDate, endDate, onEdit, onDelete }) => {
   return (
@@ -80,7 +81,7 @@ export default function EventList() {
             <div className="flex flex-col md:flex-row items-center justify-between p-8">
               <h1 className="text-3xl font-bold">Event List</h1>
               <div className="flex justify-between items-center gap-6 mt-4 md:mt-0">
-                <div className="flex items-center gap-4 bg-zinc-100 p-2 rounded shadow">
+                {/* <div className="flex items-center gap-4 bg-zinc-100 p-2 rounded shadow">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -100,7 +101,7 @@ export default function EventList() {
                     placeholder="Search..."
                     className="outline-none placeholder-secondary/80"
                   />
-                </div>
+                </div> */}
                 <a
                   type="button"
                   className="bg-secondary-100 text-white px-8 py-2 hidden md:block rounded-md shadow-md font-medium cursor-pointer hover:bg-secondary"
@@ -125,8 +126,14 @@ export default function EventList() {
                 description={event.description}
                 startDate={event.startDate}
                 endDate={event.endDate}
-                onEdit={() => router.push(`/admin/form/event-edit?id=${event.idEvent}`)}
-                onDelete={() => handleDelete(event.idEvent)}
+                onEdit={() => router.push(`/admin/form/event-edit/${event.id}`)}
+                onDelete={() => showDeleteAlert(
+                  {
+                    title: "Delete Event",
+                    message: "Are you sure you want to delete this event?",
+                    onConfirm: ()=> handleDelete(event.id)
+                  }
+                )}
               />
             ))}
           </div>

@@ -5,13 +5,31 @@ import { useRouter } from "next/router";
 import CustomerLayout from "@/components/customer-layout";
 import EventCard from "@/components/event-card";
 import Scroll from "@/components/Scroll";
-// Impor modul Node.js untuk membaca file
-import path from 'path';
-import fs from 'fs/promises';
-
-// Komponen menerima 'events' sebagai props dari getStaticProps
-const Events = ({ events }) => {
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+const Events = () => {
+    const [events, setEvents] = useState([]);
     const router = useRouter();
+    const dateFormatter = new Intl.DateTimeFormat('id-ID', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+    const fetchData = async () => {
+        try {
+        const response = await axios.get("/api/event");
+        if (response.data.success) {
+            setEvents(response.data.data);
+        }
+        } catch (e) {
+        toast.error(e.response?.data?.message || "Gagal mengambil data");
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const handleDetailsClick = (eventId) => {
         router.push(`/event-detail/${eventId}`);
@@ -29,12 +47,9 @@ const Events = ({ events }) => {
                             <Scroll>
                             <div key={event.id} className="h-[400px]">
                                 <EventCard
-                                    id={event.id}
                                     title={event.title}
-                                    subtitle={event.subtitle}
-                                    eventType={event.eventType}
-                                    dateRange={event.dateRange}
-                                    year={event.year}
+                                    startDate={dateFormatter.format(new Date(event.startDate))}
+                                    endDate={dateFormatter.format(new Date(event.endDate))}
                                     imageUrl={event.imageUrl}
                                     onDetailsClick={() => handleDetailsClick(event.id)}
                                 />
@@ -51,17 +66,3 @@ const Events = ({ events }) => {
 
 export default Events;
 
-// getStaticProps mengambil data saat proses build
-export async function getStaticProps() {
-  // Logika untuk membaca file JSON diletakkan langsung di sini
-    const filePath = path.join(process.cwd(), 'public', 'data', 'event.json');
-    const jsonData = await fs.readFile(filePath);
-    const data = JSON.parse(jsonData);
-
-  // Kirim data sebagai props ke komponen 'Events'
-  return {
-    props: {
-        events: data,
-    },
-  };
-}
